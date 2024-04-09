@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+
+body {
+  font-family: "Source Sans 3", sans-serif !important;
+}
+.post-card img {
+  display: none;
+}
+
+.post-card {
+  margin-bottom: 50px;
+}
+
+.loader {
+  display: flex !important;
+  margin: auto;
+  padding: 0rem;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.blog img {
+  transform: scale(1.4);
+
+  /* height: 40vh; */
+  width: 100%;
+  margin: 6rem 0;
+  height: 50vh;
+  /* object-fit: contain; */
+}
+
+/* .blog h2,
+.blog>,
+h4,
+h5 {
+  text-align: center;
+} */
+
+.blog > p,
+.blog > h1,
+.blog > h2,
+.blog > h3,
+.blog > h4 {
+  overflow: hidden;
+  /* padding: 0 3rem; */
+  padding: 0 3rem;
+}
+
+.blog > ol {
+  margin: 0 3rem;
+}
+
+.blog > p:has(> img) {
+  /* Styles for the parent of img */
+  padding: 0rem !important;
+}
+
+.blog > p > img {
+  object-fit: cover;
+}
+
+.nc-SectionVideos {
+  margin: 3rem 1rem !important;
+}
+
+header > div > h1 {
+  padding: 1.5rem;
+}
+
+.firstArticle {
+  object-fit: cover;
+}
+
+.w-back-to-up {
+  height: 5rem;
+  transform: scale(1.5);
+}
+.scroll-to-top {
+  text-align: -webkit-center;
+}
