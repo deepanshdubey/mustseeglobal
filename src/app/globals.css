@@ -63,6 +63,12 @@ h5 {
   object-fit: cover;
 }
 
+.blog p img{
+  border-radius: 20rem !important;
+
+}
+
+
 .nc-SectionVideos {
   margin: 3rem 1rem !important;
 }

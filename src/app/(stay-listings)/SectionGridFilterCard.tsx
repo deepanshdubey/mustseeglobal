@@ -15,6 +15,7 @@ import FoodFilter from "../(stay-listings)/(filters)/FoodFilter";
 import StayFilter from "../(stay-listings)/(filters)/StayFilter";
 import SectionHeroArchivePage from "../(server-components)/SectionHeroArchivePage";
 import { useSearchContext } from "@/context/searchContext";
+import moment from "moment";
 
 export interface SectionGridFilterCardProps {
   className?: string;
@@ -23,6 +24,7 @@ export interface SectionGridFilterCardProps {
 interface Listing {
   id: number;
   title: string;
+  listedOn: string;
   // Add other properties based on your API response
 }
 
@@ -135,8 +137,12 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
           </ul>
         </section>
       </div> */}
+      
 
-        <Heading2 heading={currentPage.slice(1)} />
+      {/* listings[listings.length]?.listedOn */}
+
+        {/* <Heading2 heading={currentPage.slice(1)} listingNum={listings.length} listedOn={moment(listings[listings.length]?.listedOn).subtract(6, 'days').calendar()}/> */}
+        <Heading2 heading={currentPage.slice(1)} listingNum={listings.length} listedOn={moment(listings[listings.length]?.listedOn).format("MMM Do YYYY")}/>
 
         <div className="mb-8 lg:mb-11">
           {renderFilter()}

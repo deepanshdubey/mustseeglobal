@@ -240,7 +240,7 @@ const Page = ({
 
   const renderTags = () => {
     return (
-      <div className="max-w-screen-md mx-auto flex flex-wrap">
+      <div className="max-w-screen-lg mx-auto flex flex-wrap px-12">
         <a
           className="nc-Tag inline-block bg-white text-sm text-neutral-600 dark:text-neutral-300 py-2 rounded-lg border border-neutral-100  md:px-4 dark:bg-neutral-700 dark:border-neutral-700 hover:border-neutral-200 dark:hover:border-neutral-6000 mr-2 mb-2"
           href="##"
