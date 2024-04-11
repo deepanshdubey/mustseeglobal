@@ -93,7 +93,7 @@ header > div > h1 {
 .darkModeMoveToTop svg > circle {
   fill: none;
   /* stroke: rgb(30, 31, 68); */
-  stroke: rgb(204, 204, 204);
+  stroke: rgb(184, 183, 183);
 
 }
 
@@ -104,7 +104,7 @@ header > div > h1 {
 
 .lightModeMoveToTop svg > circle {
   fill: none;
-  stroke: rgb(204, 204, 204);
+  stroke: rgb(184, 183, 183);
 }
 
 .lightModeMoveToTop svg > circle + circle {
