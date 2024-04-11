@@ -6,13 +6,17 @@ export interface Heading2Props {
   heading?: ReactNode;
   subHeading?: ReactNode;
   className?: string;
+  listingNum?: number;
+  listedOn?: string;
 }
 
 const Heading2: React.FC<Heading2Props> = ({
   className = "",
   heading = "Stays in New York",
   // heading = "",
+  listingNum,
   subHeading,
+  listedOn,
 }) => {
   const object = {
     food: "Food",
@@ -33,10 +37,10 @@ const Heading2: React.FC<Heading2Props> = ({
         subHeading
       ) : (
         <span className="block text-neutral-500 dark:text-neutral-400 mt-3">
-          4 stays
+          {listingNum} {heading} listings
           <span className="mx-2">·</span>
-          Feb 20 - 22
-          <span className="mx-2">·</span>2 Guests
+          Updated on: {listedOn}
+          {/* <span className="mx-2">·</span>2 Guests */}
         </span>
       )}
     </div>
