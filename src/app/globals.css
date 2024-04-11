@@ -63,11 +63,9 @@ h5 {
   object-fit: cover;
 }
 
-.blog p img{
+.blog p img {
   border-radius: 20rem !important;
-
 }
-
 
 .nc-SectionVideos {
   margin: 3rem 1rem !important;
@@ -81,10 +79,39 @@ header > div > h1 {
   object-fit: cover;
 }
 
-.w-back-to-up {
-  height: 5rem;
-  transform: scale(1.5);
+.backToTop {
+  width: 20px;
+  height: 20px;
+  z-index: -1;
 }
+
+.w-back-to-up {
+  transform: scale(1.5);
+  z-index: 100;
+}
+
+.darkModeMoveToTop svg > circle {
+  fill: none;
+  /* stroke: rgb(30, 31, 68); */
+  stroke: rgb(204, 204, 204);
+
+}
+
+.darkModeMoveToTop svg > circle + circle {
+  fill: none;
+  stroke: rgb(124, 24, 255);
+}
+
+.lightModeMoveToTop svg > circle {
+  fill: none;
+  stroke: rgb(204, 204, 204);
+}
+
+.lightModeMoveToTop svg > circle + circle {
+  fill: none;
+  stroke: rgb(139, 56, 248);
+}
+
 .scroll-to-top {
   text-align: -webkit-center;
 }

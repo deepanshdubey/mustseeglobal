@@ -25,6 +25,7 @@ import { useArticleContext } from "@/context/articleContext";
 import moment from "moment";
 import BackToUp from "@uiw/react-back-to-top";
 import ScrollToTop from "react-scroll-to-top";
+import { useThemeMode } from "@/utils/useThemeMode";
 
 const Page = ({
   params,
@@ -55,6 +56,8 @@ const Page = ({
   }
 
   const [loading, setLoading] = useState(true);
+  const { isDarkMode } = useThemeMode();
+
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -97,14 +100,19 @@ const Page = ({
             {/* Keep up the spirit of the desire to travel around the world */}
 
             {firstArticle?.articleTitle}
-            {/* <BackToUp
-              style={{ height: "100px" }}
-              height={"4rem"}
-              width={"8rem"}
-            >
-              <iframe src="https://lottie.host/embed/5dab2ca7-50a9-4479-be30-f2f9652d7a76/RceKgaSnYw.json"></iframe>
+            {/* <BackToUp className={isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"} >
+
+              <button><img src="https://lottie.host/embed/025dd737-5104-44a7-9503-c445bb4f6e79/SsMd2gOYxI.json" alt="moveToTop" /></button>
             </BackToUp> */}
-            <ScrollToTop className="" smooth />
+
+            <button>
+              <BackToUp className={isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"}>
+                <iframe className="backToTop" src="https://lottie.host/embed/025dd737-5104-44a7-9503-c445bb4f6e79/SsMd2gOYxI.json"/>
+              </BackToUp>
+            </button>
+
+
+            {/* <ScrollToTop className="" smooth /> */}
           </h1>
 
           <div className="w-full border-b border-neutral-100 dark:border-neutral-800"></div>
@@ -378,7 +386,7 @@ const Page = ({
           <motion.div
             initial={{ opacity: 0, y: 50 }} // Initial animation state (opacity 0 and move 50px down)
             animate={{ opacity: 1, y: 0 }} // Animation when component mounts (opacity 1 and move to initial position)
-            transition={{ duration: 0.5, delay: 0.5 }} // Animation duration
+            transition={{ duration: 0.4, delay: 0.3 }} // Animation duration
           >
             <div className="nc-PageSingle ">
               {firstArticle.thumbnailImage && (
