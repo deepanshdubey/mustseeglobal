@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 // import Markdown from 'react-markdown'
 import { DEMO_POSTS } from "@/data/posts";
 import { PostDataType } from "@/data/types";
@@ -368,28 +369,34 @@ const Page = ({
   };
 
   return (
-    // <div className="nc-PageSingle pt-8 lg:pt-16 ">
-    <div className="nc-PageSingle ">
+
+    <>
       {loading ? (
         <ScaleLoader className="loader" color="#009aff" />
       ) : (
         <>
-          {firstArticle.thumbnailImage && (
-            <div
-              className="relative left-0 w-full h-full"
-              style={{
-                backgroundImage: `url(${firstArticle.thumbnailImage})`,
-                backgroundPosition: "50% 25%",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                opacity: "1",
-                height: "50vh",
-                margin: "0 auto",
-                marginBottom: "2rem",
-              }}
-            ></div>
-          )}
-          {/* <div className=" my-40 sm:my-12 w-full relative h-full mt-0">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }} // Initial animation state (opacity 0 and move 50px down)
+            animate={{ opacity: 1, y: 0 }} // Animation when component mounts (opacity 1 and move to initial position)
+            transition={{ duration: 0.5, delay: 0.5 }} // Animation duration
+          >
+            <div className="nc-PageSingle ">
+              {firstArticle.thumbnailImage && (
+                <div
+                  className="relative left-0 w-full h-full"
+                  style={{
+                    backgroundImage: `url(${firstArticle.thumbnailImage})`,
+                    backgroundPosition: "50% 25%",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    opacity: "1",
+                    height: "50vh",
+                    margin: "0 auto",
+                    marginBottom: "2rem",
+                  }}
+                ></div>
+              )}
+              {/* <div className=" my-40 sm:my-12 w-full relative h-full mt-0">
             <Image
               // className="rounded-xl w-full h-auto"
               src={firstArticle.thumbnailImage}
@@ -407,38 +414,40 @@ const Page = ({
               // }}
             />
           </div> */}
-          {renderHeader()}
+              {renderHeader()}
 
-          {/* <div className="relative flex"> */}
+              {/* <div className="relative flex"> */}
 
-          {/* </div> */}
+              {/* </div> */}
 
-          {/* </div> */}
+              {/* </div> */}
 
-          <div className="nc-SingleContent container space-y-10 px-4">
-            {renderContent()}
-            {renderTags()}
-            <div className="max-w-screen-lg mx-auto border-b border-t border-neutral-100 dark:border-neutral-700"></div>
-            {/* {renderAuthor()} */}
-            {/* {renderCommentForm()} */}
-            {/* {renderCommentLists()} */}
-          </div>
-          <div className="relative bg-neutral-100 dark:bg-neutral-800 py-16 lg:py-28 mt-16 lg:mt-24">
-            <div className="container ">
-              <h2 className="text-3xl font-semibold">Related posts</h2>
-              <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-                {/*  */}
-                {/* {DEMO_POSTS.filter((_, i) => i < 4).map(renderPostRelated)} */}
-                {articles &&
-                  articles
-                    .filter((_: any, i: any) => i < 4)
-                    .map((article: any) => renderPostRelated(article))}
+              <div className="nc-SingleContent container space-y-10 px-4">
+                {renderContent()}
+                {renderTags()}
+                <div className="max-w-screen-lg mx-auto border-b border-t border-neutral-100 dark:border-neutral-700"></div>
+                {/* {renderAuthor()} */}
+                {/* {renderCommentForm()} */}
+                {/* {renderCommentLists()} */}
+              </div>
+              <div className="relative bg-neutral-100 dark:bg-neutral-800 py-16 lg:py-28 mt-16 lg:mt-24">
+                <div className="container ">
+                  <h2 className="text-3xl font-semibold">Related posts</h2>
+                  <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+                    {/*  */}
+                    {/* {DEMO_POSTS.filter((_, i) => i < 4).map(renderPostRelated)} */}
+                    {articles &&
+                      articles
+                        .filter((_: any, i: any) => i < 4)
+                        .map((article: any) => renderPostRelated(article))}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </>
       )}
-    </div>
+    </>
   );
 };
 
