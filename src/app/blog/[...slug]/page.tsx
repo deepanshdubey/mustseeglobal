@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import upArrorw from "./Up Arrow.gif";
 // import Markdown from 'react-markdown'
 import { DEMO_POSTS } from "@/data/posts";
 import { PostDataType } from "@/data/types";
@@ -54,6 +55,10 @@ const Page = ({
     category: string;
     // Add other properties as needed
   }
+  interface BackToUpProps {
+    children: React.ReactElement<HTMLImageElement>;
+    className?: any;
+  }
 
   const [loading, setLoading] = useState(true);
   const { isDarkMode } = useThemeMode();
@@ -105,14 +110,11 @@ const Page = ({
               <button><img src="https://lottie.host/embed/025dd737-5104-44a7-9503-c445bb4f6e79/SsMd2gOYxI.json" alt="moveToTop" /></button>
             </BackToUp> */}
 
-            <button>
-              <BackToUp className={isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"}>
-                <iframe className="backToTop" src="https://lottie.host/embed/025dd737-5104-44a7-9503-c445bb4f6e79/SsMd2gOYxI.json"/>
-              </BackToUp>
-            </button>
-
-
-            {/* <ScrollToTop className="" smooth /> */}
+            <BackToUp className={isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"}>
+              
+            {/* <iframe className="backToTop" src="https://lottie.host/embed/65ccd2cf-eada-41f0-9e29-6a75b0726f22/P3WEtcoyAA.json"></iframe>             */}
+            🔝
+            </BackToUp>
           </h1>
 
           <div className="w-full border-b border-neutral-100 dark:border-neutral-800"></div>
