@@ -11,6 +11,13 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Pagination from "@/shared/Pagination";
 import { useSearchContext } from "@/context/searchContext";
+import { useScratch } from "react-use";
+// import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
+
 
 // OTHER DEMO WILL PASS PROPS
 const DEMO_DATA: StayDataType[] = DEMO_STAY_LISTINGS.filter((_, i) => i < 8);
@@ -62,7 +69,9 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   const [totalPages, setTotalPages] = useState();
   const { search, setSearch } = useSearchContext();
   const [firstSearch, setFirstSearch] = useState(true);
+  const [loading, setLoading] = useState(true);
   const currentPage = usePathname();
+
   console.log("first search", firstSearch);
 
   useEffect(() => {
@@ -101,34 +110,82 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
           console.error("Error fetching data:", error);
         }
       }
+      setLoading(false);
     };
 
     fetchData();
   }, [page, search.isActive, search.category.isActive]);
 
   return (
-    <div className="nc-SectionGridFeaturePlaces relative">
-      <HeaderFilter
-        tabActive={"New York"}
-        subHeading={subHeading}
-        tabs={tabs}
-        heading={heading}
-        from={from}
-      />
-      <div
-        className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${gridClass}`}
-      >
-        {/* {stayListings.map((stay) => renderCard(stay))} */}
-        {listings.map((stay) => renderCard(stay))}
-      </div>
-      <div className="flex mt-8 mb-8 justify-center items-center">
-        {/* <ButtonPrimary loading>Show me more</ButtonPrimary> */}
-        {/* <Link href={"/listings"}>
+    <>
+      {!loading ? (<div className="nc-SectionGridFeaturePlaces relative">
+        <HeaderFilter
+          tabActive={"New York"}
+          subHeading={subHeading}
+          tabs={tabs}
+          heading={heading}
+          from={from}
+        />
+        <div
+          className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${gridClass}`}
+        >
+          {/* {stayListings.map((stay) => renderCard(stay))} */}
+          {listings.map((stay) => renderCard(stay))}
+        </div>
+        <div className="flex mt-8 mb-8 justify-center items-center">
+          {/* <ButtonPrimary loading>Show me more</ButtonPrimary> */}
+          {/* <Link href={"/listings"}>
           <ButtonPrimary>Show me more</ButtonPrimary>
         </Link> */}
-        <Pagination page={page} setPage={setPage} totalPages={totalPages} />
-      </div>
-    </div>
+          <Pagination page={page} setPage={setPage} totalPages={totalPages} />
+        </div>
+      </div>) : (
+
+        <>
+          <div className="listingSkeleton">
+            <Box sx={{ pt: 0.5 }}>
+              <Skeleton width="70%" />
+              <Skeleton width="20%" />
+              <Skeleton width="20%" />
+              <Skeleton width="50%" />
+              <Skeleton width="50%" />
+              <Skeleton width="70%" />
+            </Box>
+            <Box sx={{ pt: 0.5 }}>
+              <Skeleton width="70%" />
+              <Skeleton width="20%" />
+              <Skeleton width="20%" />
+              <Skeleton width="50%" />
+              <Skeleton width="50%" />
+              <Skeleton width="70%" />
+            </Box>
+            <Box sx={{ pt: 0.5 }}>
+              <Skeleton width="70%" />
+              <Skeleton width="20%" />
+              <Skeleton width="20%" />
+              <Skeleton width="50%" />
+              <Skeleton width="50%" />
+              <Skeleton width="70%" />
+            </Box>
+            <Box sx={{ pt: 0.5 }}>
+              <Skeleton width="70%" />
+              <Skeleton width="20%" />
+              <Skeleton width="20%" />
+              <Skeleton width="50%" />
+              <Skeleton width="50%" />
+              <Skeleton width="70%" />
+            </Box>
+          </div>
+        </>
+
+
+
+
+
+
+        // <Skeleton variant="rectangular" width={210} height={118} />
+      )}
+    </>
   );
 };
 
