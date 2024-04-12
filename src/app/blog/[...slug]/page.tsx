@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import upArrorw from "./Up Arrow.gif";
 // import Markdown from 'react-markdown'
 import { DEMO_POSTS } from "@/data/posts";
 import { PostDataType } from "@/data/types";

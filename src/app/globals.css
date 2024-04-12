@@ -115,3 +115,8 @@ header > div > h1 {
 .scroll-to-top {
   text-align: -webkit-center;
 }
+
+.listingSkeleton{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
