@@ -45,15 +45,15 @@ const Card12: FC<Card12Props> = ({
     <div className={`nc-Card12 group relative flex flex-col ${className}`}>
       <Link
         href={
-          articles && articles[0] && articles[0]._id
-            ? `/blog/${articles[0]._id}`
+          articles && articles[0] && articles[0].slug
+            ? `/blog/${articles[0].slug}`
             : `/`
         }
         className="block flex-shrink-0 flex-grow relative w-full h-0 aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden"
         // className="block flex-shrink-0 flex-grow relative w-full  rounded-3xl overflow-hidden"
       >
         <Image
-        className={"firstArticle"}
+          className={"firstArticle"}
           fill
           src={articles && articles[0] && articles[0]?.thumbnailImage}
           alt={title}
@@ -76,7 +76,7 @@ const Card12: FC<Card12Props> = ({
           className={`nc-card-title block font-semibold text-neutral-900 dark:text-neutral-100 transition-colors text-lg sm:text-2xl`}
         >
           <Link
-            href={articles && articles[0] ? `/blog/${articles[0]._id}` : `/`}
+            href={articles && articles[0] ? `/blog/${articles[0].slug}` : `/`}
             className="line-clamp-2"
             title={title}
           >

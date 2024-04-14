@@ -88,13 +88,13 @@ const CardCategory5: FC<CardCategory5Props> = ({
       </Link>
     );
   } else {
-    const { articleTitle, thumbnailImage, imageUrls, _id } = taxonomy;
+    const { articleTitle, thumbnailImage, imageUrls, _id, slug } = taxonomy;
 
     // console.log("thumbnail image ", thumbnailImage);
 
     return (
       <Link
-        href={_id ? `/blog/${_id}` : `/`}
+        href={slug ? `/blog/${slug}` : `/`}
         className={`nc-CardCategory5 flex flex-col ${className}`}
         data-nc-id="CardCategory5"
       >

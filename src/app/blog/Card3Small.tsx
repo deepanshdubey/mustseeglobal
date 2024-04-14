@@ -23,6 +23,7 @@ const Card3Small: FC<Card3SmallProps> = ({ className = "h-full", post }) => {
     lastUpdate,
     thumbnailImage,
     _id,
+    slug,
   } = post;
 
   return (
@@ -31,7 +32,7 @@ const Card3Small: FC<Card3SmallProps> = ({ className = "h-full", post }) => {
       data-nc-id="Card3Small"
     >
       <Link
-        href={_id ? `/blog/${_id}` : `/`}
+        href={slug ? `/blog/${slug}` : `/`}
         className=" absolute inset-0"
         title={articleTitle}
       ></Link>
@@ -40,7 +41,7 @@ const Card3Small: FC<Card3SmallProps> = ({ className = "h-full", post }) => {
         {/* <PostCardMeta meta={{ ...post }} /> */}
         <h2 className="nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100">
           <Link
-            href={_id ? `/blog/${_id}` : `/`}
+            href={slug ? `/blog/${slug}` : `/`}
             className="line-clamp-2"
             title={articleTitle}
           >
@@ -50,7 +51,7 @@ const Card3Small: FC<Card3SmallProps> = ({ className = "h-full", post }) => {
       </div>
 
       <Link
-        href={_id ? `/blog/${_id}` : `/`}
+        href={slug ? `/blog/${slug}` : `/`}
         title={articleTitle}
         className={`block sm:w-20 flex-shrink-0 relative rounded-lg overflow-hidden mb-5 sm:ml-4 sm:mb-0 group`}
       >

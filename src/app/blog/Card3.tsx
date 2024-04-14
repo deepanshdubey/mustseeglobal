@@ -30,6 +30,7 @@ const Card3: FC<Card3Props> = ({ className = "h-full", post }) => {
     lastUpdate,
     thumbnailImage,
     _id,
+    slug,
   } = post;
   // console.log("post", post);
 
@@ -45,7 +46,7 @@ const Card3: FC<Card3Props> = ({ className = "h-full", post }) => {
               className={`nc-card-title block font-semibold text-neutral-900 dark:text-neutral-100 text-xl`}
             >
               <Link
-                href={_id ? `/blog/${_id}` : `/`}
+                href={slug ? `/blog/${slug}` : `/`}
                 className="line-clamp-2"
                 title={articleTitle}
               >
@@ -67,7 +68,7 @@ const Card3: FC<Card3Props> = ({ className = "h-full", post }) => {
         className={`block flex-shrink-0 sm:w-56 sm:ml-6 rounded-3xl overflow-hidden mb-5 sm:mb-0`}
       >
         <Link
-          href={_id ? `/blog/${_id}` : `/`}
+          href={slug ? `/blog/${slug}` : `/`}
           className={`block w-full h-0 aspect-h-10 sm:aspect-h-10 aspect-w-16 `}
         >
           <Image

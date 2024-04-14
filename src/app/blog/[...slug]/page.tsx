@@ -61,14 +61,14 @@ const Page = ({
 
   const [loading, setLoading] = useState(true);
   const { isDarkMode } = useThemeMode();
-
-
+  const { slug } = params;
   useEffect(() => {
     const fetchArticle = async () => {
-      const article_id = params.slug[0];
+      console.log("slug is", slug[0]);
+
       try {
         const response = await axios.get(
-          `https://msny-backend-deepansh.vercel.app/api/v1/articles/${article_id}`
+          `https://msny-backend-deepansh.vercel.app/api/v1/articles/${slug[0]}`
         );
         // const response = await axios.get(
         //   `http://localhost:9000/api/v1/articles`
@@ -109,10 +109,13 @@ const Page = ({
               <button><img src="https://lottie.host/embed/025dd737-5104-44a7-9503-c445bb4f6e79/SsMd2gOYxI.json" alt="moveToTop" /></button>
             </BackToUp> */}
 
-            <BackToUp className={isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"}>
-              
-            {/* <iframe className="backToTop" src="https://lottie.host/embed/65ccd2cf-eada-41f0-9e29-6a75b0726f22/P3WEtcoyAA.json"></iframe>             */}
-            🔝
+            <BackToUp
+              className={
+                isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"
+              }
+            >
+              {/* <iframe className="backToTop" src="https://lottie.host/embed/65ccd2cf-eada-41f0-9e29-6a75b0726f22/P3WEtcoyAA.json"></iframe>             */}
+              🔝
             </BackToUp>
           </h1>
 
@@ -346,7 +349,7 @@ const Page = ({
         key={article._id}
         className="relative aspect-w-3 aspect-h-4 rounded-3xl overflow-hidden group"
       >
-        <Link href={article ? `/blog/${article._id}` : `/`} />
+        <Link href={article ? `/blog/${article.slug}` : `/`} />
         <Image
           className="object-cover transform group-hover:scale-105 transition-transform duration-300"
           src={article.thumbnailImage}
@@ -372,13 +375,12 @@ const Page = ({
             {/* <span className="font-normal truncate">{post.date}</span>  */}
           </div>
         </div>
-        <Link href={article ? `/blog/${article._id}` : `/`} />
+        <Link href={article ? `/blog/${article.slug}` : `/`} />
       </div>
     );
   };
 
   return (
-
     <>
       {loading ? (
         <ScaleLoader className="loader" color="#009aff" />
