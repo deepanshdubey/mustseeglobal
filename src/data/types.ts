@@ -72,6 +72,7 @@ export interface PostDataType {
   date: Date;
   thumbnailImage: string;
   _id: any;
+  slug?: any;
 }
 
 export type TwMainColor =
@@ -116,6 +117,7 @@ export interface StayDataType {
   address?: any;
   imageUrls?: any;
   _id?: any;
+  slug?: any;
 }
 
 //
