@@ -30,6 +30,7 @@ const CardCategory5: FC<CardCategory5Props> = ({
       listingType,
       imageUrls,
       _id,
+      slug,
     } = taxonomy;
 
     useEffect(() => {
@@ -53,7 +54,7 @@ const CardCategory5: FC<CardCategory5Props> = ({
     };
     return (
       <Link
-        href={_id ? `/listing-stay-detail/${_id}` : `/`}
+        href={slug ? `/listing-stay-detail/${slug}` : `/`}
         className={`nc-CardCategory4 flex flex-col ${className}`}
         data-nc-id="CardCategory4"
       >
@@ -75,7 +76,7 @@ const CardCategory5: FC<CardCategory5Props> = ({
           >
             {name}
           </h2>
-          <span
+          {/* <span
             className={`block mt-2 text-sm text-neutral-6000 dark:text-neutral-400`}
           >
             {convertNumbThousand(count || 0)}
@@ -83,7 +84,7 @@ const CardCategory5: FC<CardCategory5Props> = ({
             {(!listingType || listingType === "stay") && "properties"}
             {listingType === "car" && "cars"}
             {listingType === "experiences" && "experiences"}
-          </span>
+          </span> */}
         </div>
       </Link>
     );

@@ -26,6 +26,8 @@ import moment from "moment";
 import BackToUp from "@uiw/react-back-to-top";
 import ScrollToTop from "react-scroll-to-top";
 import { useThemeMode } from "@/utils/useThemeMode";
+import { useListingContext } from "@/context/listingContext";
+import SectionSliderNewCategories from "@/components/SectionSliderNewCategories";
 
 const Page = ({
   params,
@@ -62,6 +64,7 @@ const Page = ({
   const [loading, setLoading] = useState(true);
   const { isDarkMode } = useThemeMode();
   const { slug } = params;
+  const { listings } = useListingContext();
   useEffect(() => {
     const fetchArticle = async () => {
       console.log("slug is", slug[0]);
@@ -104,9 +107,18 @@ const Page = ({
             {/* Keep up the spirit of the desire to travel around the world */}
 
             {firstArticle?.articleTitle}
-            {/* <BackToUp className={isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"} >
-
-              <button><img src="https://lottie.host/embed/025dd737-5104-44a7-9503-c445bb4f6e79/SsMd2gOYxI.json" alt="moveToTop" /></button>
+            {/* <BackToUp
+              className={
+                isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"
+              }
+            >
+              <button>
+                <img
+                  src="https://lottie.host/embed/025dd737-5104-44a7-9503-c445bb4f6e79/SsMd2gOYxI.json"
+                  alt="moveToTop"
+                />
+                <iframe src="https://lottie.host/embed/6da84fdf-a7eb-4373-bec3-29270305ada1/6E5Yo9pAz1.json"></iframe>
+              </button>
             </BackToUp> */}
 
             <BackToUp
@@ -453,6 +465,19 @@ const Page = ({
                         .map((article: any) => renderPostRelated(article))}
                   </div>
                 </div>
+              </div>
+              <div className="container py-24 lg:py-32">
+                <SectionSliderNewCategories
+                  // categories={DEMO_CATS_2}
+                  categories={listings.data}
+                  categoryCardType="card5"
+                  itemPerRow={5}
+                  heading="Suggestions for discovery"
+                  subHeading="Popular places to stay that Must See New York recommends for you"
+                  sliderStyle="style2"
+                  from="/"
+                  className=""
+                />
               </div>
             </div>
           </motion.div>

@@ -11,13 +11,14 @@ import { imageGallery as listingStayImageGallery } from "./listing-stay-detail/c
 import { imageGallery as listingCarImageGallery } from "./listing-car-detail/constant";
 import { imageGallery as listingExperienceImageGallery } from "./listing-experiences-detail/constant";
 import { Route } from "next";
+import { useListingContext } from "@/context/listingContext";
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const thisPathname = usePathname();
   const searchParams = useSearchParams();
   const modal = searchParams?.get("modal");
-
+  const { listings } = useListingContext();
   const path = usePathname();
   const slug = path.split("/")[2];
   console.log("pathname is", slug);
@@ -107,6 +108,17 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
           />
         </div>
         <SectionSubscribe2 className="pt-24 lg:pt-32" />
+        <SectionSliderNewCategories
+          // categories={DEMO_CATS_2}
+          categories={listings.data}
+          categoryCardType="card5"
+          itemPerRow={5}
+          heading="Suggestions for discovery"
+          subHeading="Popular places to stay that Must See New York recommends for you"
+          sliderStyle="style2"
+          from="/"
+          className="pt-24 lg:pt-32"
+        />
       </div>
 
       {/* STICKY FOOTER MOBILE */}
