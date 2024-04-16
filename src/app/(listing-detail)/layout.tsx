@@ -11,12 +11,17 @@ import { imageGallery as listingStayImageGallery } from "./listing-stay-detail/c
 import { imageGallery as listingCarImageGallery } from "./listing-car-detail/constant";
 import { imageGallery as listingExperienceImageGallery } from "./listing-experiences-detail/constant";
 import { Route } from "next";
+import { useListingContext } from "@/context/listingContext";
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const thisPathname = usePathname();
   const searchParams = useSearchParams();
   const modal = searchParams?.get("modal");
+  const { listings } = useListingContext();
+  const path = usePathname();
+  const slug = path.split("/")[2];
+  console.log("pathname is", slug);
 
   const handleCloseModalImageGallery = () => {
     let params = new URLSearchParams(document.location.search);
@@ -25,18 +30,22 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
   };
 
   const fetchListing = (id: any) => {
+    console.log("slug is", slug);
+
     return fetch(
-      `https://msny-backend-deepansh.vercel.app/api/v1/listings/${id}`
+      `https://msny-backend-deepansh.vercel.app/api/v1/listings/${slug}`
     )
       .then((response) => {
+        console.log("response is", response);
+
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         return response.json();
       })
       .then((data) => {
-        // console.log("LISTINGS hai", data.imageUrls);
-        return Object.values(data.imageUrls);
+        console.log("LISTINGS hai", data.data.imageUrls);
+        return Object.values(data.data.imageUrls);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -54,7 +63,7 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
     if (thisPathname?.includes("/listing-stay-detail")) {
       const data = fetchListing(page)
         .then((data) => {
-          // console.log("data received", data);
+          console.log("data received", data);
           return data;
         })
         .catch((err) => {
@@ -99,6 +108,17 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
           />
         </div>
         <SectionSubscribe2 className="pt-24 lg:pt-32" />
+        <SectionSliderNewCategories
+          // categories={DEMO_CATS_2}
+          categories={listings.data}
+          categoryCardType="card5"
+          itemPerRow={5}
+          heading="Suggestions for discovery"
+          subHeading="Popular places to stay that Must See New York recommends for you"
+          sliderStyle="style2"
+          from="/"
+          className="pt-24 lg:pt-32"
+        />
       </div>
 
       {/* STICKY FOOTER MOBILE */}

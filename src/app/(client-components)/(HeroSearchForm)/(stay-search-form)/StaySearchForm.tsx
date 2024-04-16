@@ -3,6 +3,8 @@ import LocationInput from "../LocationInput";
 import GuestsInput from "../GuestsInput";
 import ButtonSubmit from "../../../(client-components)/(HeroSearchForm)/ButtonSubmit";
 import StayDatesRangeInput from "./StayDatesRangeInput";
+import { usePathname } from "next/navigation";
+import { useSearchContext } from "@/context/searchContext";
 
 const StaySearchForm: FC<{}> = ({}) => {
   const [location, setLocation] = useState();
@@ -14,8 +16,40 @@ const StaySearchForm: FC<{}> = ({}) => {
     //   e.preventDefault();
     //   console.log("listings search");
     // };
+
+    const { search, setSearch } = useSearchContext();
+    const currentPage = usePathname();
+
+    const searchListings = (e: any) => {
+      e.preventDefault();
+      console.log("listings search");
+
+      setSearch((prevSearch: any) => ({
+        ...prevSearch,
+        page: currentPage,
+        isActive: true,
+      }));
+
+      setTimeout(() => {
+        setSearch((prevSearch: any) => ({
+          ...prevSearch,
+          page: currentPage,
+          isActive: false,
+        }));
+      }, 2000);
+    };
+
+    const handleKeyPress = (e: any) => {
+      if (e.key === "Enter") {
+        searchListings(e);
+      }
+    };
     return (
-      <form className="relative m-auto mt-12 flex  rounded-full shadow-xl dark:shadow-2xl bg-white dark:bg-neutral-800 ">
+      <form
+        className="relative m-auto mt-12 flex  rounded-full shadow-xl dark:shadow-2xl bg-white dark:bg-neutral-800"
+        onKeyDown={handleKeyPress}
+        onSubmit={searchListings}
+      >
         <LocationInput
           location={location}
           setLocation={setLocation}

@@ -3,6 +3,8 @@
 import { Popover, Transition } from "@headlessui/react";
 import Input from "@/shared/Input";
 import React, { FC, Fragment } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 interface Props {
   className?: string;
@@ -10,7 +12,52 @@ interface Props {
 
 const SearchDropdown: FC<Props> = ({ className = "" }) => {
   const inputRef = React.createRef<HTMLInputElement>();
+  const router = useRouter();
+  const searchBlogs = (e: any) => {
+    e.preventDefault();
+    console.log("ref", inputRef?.current?.value);
 
+    const fetchArticle = async () => {
+      console.log("search is");
+
+      try {
+        const response = await axios.get(
+          `https://msny-backend-deepansh.vercel.app/api/v1/articles?slug=${inputRef?.current?.value}`
+        );
+        // const response = await axios.get(
+        //   `http://localhost:9000/api/v1/articles`
+        // );
+        const article = response.data;
+        console.log("blog search is", article);
+        const result = article[0]?.slug ?? "";
+
+        if (result) {
+          router.push(`/blog/${result}`);
+        } else {
+          router.push(`/blog`);
+        }
+        // setArticle(article);
+        // setfirstArticle(article);
+
+        // console.log("single article", article);
+
+        // let first = article[0]
+        // console.log(firstArticle, "first article");
+        // setLoading(false); // Set loading to false when data is received
+      } catch (error) {
+        console.error("error while fetching single article", error);
+        // setLoading(false); // Set loading to false in case of an error
+      }
+    };
+
+    fetchArticle();
+  };
+
+  const handleKeyPress = (e: any) => {
+    if (e.key === "Enter") {
+      searchBlogs(e);
+    }
+  };
   return (
     <React.Fragment>
       <Popover className={`relative ${className}`}>
@@ -41,7 +88,12 @@ const SearchDropdown: FC<Props> = ({ className = "" }) => {
                   static
                   className="absolute right-0 z-10 top-full w-screen max-w-sm"
                 >
-                  <form action="" method="POST">
+                  <form
+                    action=""
+                    method="POST"
+                    onSubmit={searchBlogs}
+                    onKeyDown={handleKeyPress}
+                  >
                     <Input
                       ref={inputRef}
                       rounded="rounded-full"

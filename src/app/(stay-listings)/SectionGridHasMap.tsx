@@ -20,7 +20,7 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
   const [currentHoverID, setCurrentHoverID] = useState<string | number>(-1);
   const [showFullMapFixed, setShowFullMapFixed] = useState(false);
   const { listings } = useListingContext();
-  const DEMO_STAYS = listings.filter((_, i) => i < 12);
+  const DEMO_STAYS = listings.filter((_: any, i: any) => i < 12);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
             <TabFilters />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 2xl:gap-x-6 gap-y-8">
-            {DEMO_STAYS.map((item) => (
+            {DEMO_STAYS.map((item: any) => (
               <div
                 key={item.id}
                 onMouseEnter={() => setCurrentHoverID((_) => item.id)}
@@ -98,7 +98,7 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
                   }}
                   yesIWantToUseGoogleMapApiInternals
                 >
-                  {DEMO_STAYS.map((item) => (
+                  {DEMO_STAYS.map((item: any) => (
                     <AnyReactComponent
                       // isSelected={currentHoverID === item.id}
                       isSelected={currentHoverID === item._id}

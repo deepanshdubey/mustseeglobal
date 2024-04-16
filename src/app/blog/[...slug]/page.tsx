@@ -26,6 +26,8 @@ import moment from "moment";
 import BackToUp from "@uiw/react-back-to-top";
 import ScrollToTop from "react-scroll-to-top";
 import { useThemeMode } from "@/utils/useThemeMode";
+import { useListingContext } from "@/context/listingContext";
+import SectionSliderNewCategories from "@/components/SectionSliderNewCategories";
 
 const Page = ({
   params,
@@ -61,14 +63,15 @@ const Page = ({
 
   const [loading, setLoading] = useState(true);
   const { isDarkMode } = useThemeMode();
-
-
+  const { slug } = params;
+  const { listings } = useListingContext();
   useEffect(() => {
     const fetchArticle = async () => {
-      const article_id = params.slug[0];
+      console.log("slug is", slug[0]);
+
       try {
         const response = await axios.get(
-          `https://msny-backend-deepansh.vercel.app/api/v1/articles/${article_id}`
+          `https://msny-backend-deepansh.vercel.app/api/v1/articles/${slug[0]}`
         );
         // const response = await axios.get(
         //   `http://localhost:9000/api/v1/articles`
@@ -104,15 +107,27 @@ const Page = ({
             {/* Keep up the spirit of the desire to travel around the world */}
 
             {firstArticle?.articleTitle}
-            {/* <BackToUp className={isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"} >
-
-              <button><img src="https://lottie.host/embed/025dd737-5104-44a7-9503-c445bb4f6e79/SsMd2gOYxI.json" alt="moveToTop" /></button>
+            {/* <BackToUp
+              className={
+                isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"
+              }
+            >
+              <button>
+                <img
+                  src="https://lottie.host/embed/025dd737-5104-44a7-9503-c445bb4f6e79/SsMd2gOYxI.json"
+                  alt="moveToTop"
+                />
+                <iframe src="https://lottie.host/embed/6da84fdf-a7eb-4373-bec3-29270305ada1/6E5Yo9pAz1.json"></iframe>
+              </button>
             </BackToUp> */}
 
-            <BackToUp className={isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"}>
-              
-            {/* <iframe className="backToTop" src="https://lottie.host/embed/65ccd2cf-eada-41f0-9e29-6a75b0726f22/P3WEtcoyAA.json"></iframe>             */}
-            🔝
+            <BackToUp
+              className={
+                isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"
+              }
+            >
+              {/* <iframe className="backToTop" src="https://lottie.host/embed/65ccd2cf-eada-41f0-9e29-6a75b0726f22/P3WEtcoyAA.json"></iframe>             */}
+              🔝
             </BackToUp>
           </h1>
 
@@ -346,7 +361,7 @@ const Page = ({
         key={article._id}
         className="relative aspect-w-3 aspect-h-4 rounded-3xl overflow-hidden group"
       >
-        <Link href={article ? `/blog/${article._id}` : `/`} />
+        <Link href={article ? `/blog/${article.slug}` : `/`} />
         <Image
           className="object-cover transform group-hover:scale-105 transition-transform duration-300"
           src={article.thumbnailImage}
@@ -372,13 +387,12 @@ const Page = ({
             {/* <span className="font-normal truncate">{post.date}</span>  */}
           </div>
         </div>
-        <Link href={article ? `/blog/${article._id}` : `/`} />
+        <Link href={article ? `/blog/${article.slug}` : `/`} />
       </div>
     );
   };
 
   return (
-
     <>
       {loading ? (
         <ScaleLoader className="loader" color="#009aff" />
@@ -451,6 +465,19 @@ const Page = ({
                         .map((article: any) => renderPostRelated(article))}
                   </div>
                 </div>
+              </div>
+              <div className="container py-24 lg:py-32">
+                <SectionSliderNewCategories
+                  // categories={DEMO_CATS_2}
+                  categories={listings.data}
+                  categoryCardType="card5"
+                  itemPerRow={5}
+                  heading="Suggestions for discovery"
+                  subHeading="Popular places to stay that Must See New York recommends for you"
+                  sliderStyle="style2"
+                  from="/"
+                  className=""
+                />
               </div>
             </div>
           </motion.div>

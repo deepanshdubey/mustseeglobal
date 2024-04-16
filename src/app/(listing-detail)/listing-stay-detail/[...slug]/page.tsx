@@ -66,14 +66,14 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const id = slug[0];
+        const path = slug[0];
         const response = await fetch(
-          `https://msny-backend-deepansh.vercel.app/api/v1/listings/${id}`
+          `https://msny-backend-deepansh.vercel.app/api/v1/listings?slug=${path}`
         );
         const data = await response.json();
-        setListings(data);
-        renderImages(data.imageUrls);
-        // console.log("LISTINGS", data);
+        setListings(data.data[0]);
+        renderImages(data.data[0].imageUrls);
+        console.log("LISTINGS", data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -127,11 +127,23 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
       <div className="listingSection__wrap !space-y-6">
         {/* 1 */}
         <div className="flex justify-between items-center">
-         <div className="category space-x-4">
-         <Badge name={((listings?.category?.category)?.charAt(0)?.toUpperCase() ?? "Must See New York") + (listings?.category?.category ?? "")?.slice(1) ?? ""} />
-          <Badge name={((listings?.category?.subcategory)?.charAt(0)?.toUpperCase() ?? "Must See Global") + (listings?.category?.subcategory ?? "")?.slice(1) ?? ""} />
-         </div>
-          
+          <div className="category space-x-4">
+            <Badge
+              name={
+                (listings?.category?.category?.charAt(0)?.toUpperCase() ??
+                  "Must See New York") +
+                  (listings?.category?.category ?? "")?.slice(1) ?? ""
+              }
+            />
+            <Badge
+              name={
+                (listings?.category?.subcategory?.charAt(0)?.toUpperCase() ??
+                  "Must See Global") +
+                  (listings?.category?.subcategory ?? "")?.slice(1) ?? ""
+              }
+            />
+          </div>
+
           {/* <Badge name={(listings?.category?.name ?? "").charAt(0)?.toUpperCase() + (listings?.category?.name ?? "").slice(1)} /> */}
           <LikeSaveBtns />
         </div>
@@ -143,7 +155,10 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
 
         {/* 3 */}
         <div className="flex items-center space-x-4">
-          <StartRating point={listings?.rating} reviewCount={listings?.numReviews} />
+          <StartRating
+            point={listings?.rating}
+            reviewCount={listings?.numReviews}
+          />
           <span>·</span>
           <span>
             <i className="las la-map-marker-alt"></i>
@@ -200,7 +215,12 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
     return (
       <div className="listingSection__wrap">
         {/* <h2 className="text-2xl font-semibold">{(listings?.category?.name ?? '').charAt(0)?.toUpperCase() + (listings?.category?.name ?? '').slice(1)} Information</h2> */}
-        <h2 className="text-2xl font-semibold">{((listings?.category?.subcategory)?.charAt(0)?.toUpperCase() ?? "") + (listings?.category?.subcategory ?? "")?.slice(1) ?? "Location"} Information</h2>
+        <h2 className="text-2xl font-semibold">
+          {(listings?.category?.subcategory?.charAt(0)?.toUpperCase() ?? "") +
+            (listings?.category?.subcategory ?? "")?.slice(1) ??
+            "Location"}{" "}
+          Information
+        </h2>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
         <div className="text-neutral-6000 dark:text-neutral-300">
           <span>{listings?.description}</span>

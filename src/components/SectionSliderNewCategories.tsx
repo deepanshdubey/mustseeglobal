@@ -118,11 +118,13 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
   const [direction, setDirection] = useState(0);
   const [numberOfItems, setNumberOfitem] = useState(0);
 
-  const listings = useListingContext();
+  const { listings } = useListingContext();
   const { articles } = useArticleContext();
-  // console.log("listings--->", listings);
+  console.log("listings--->", listings);
   console.log("from--->", from);
   console.log("category card--->", categoryCardType);
+
+  console.log("current index", currentIndex);
 
   const windowWidth = useWindowSize().width;
   useEffect(() => {
@@ -248,7 +250,7 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
             </motion.ul>
           </div>
 
-          {currentIndex ? (
+          {currentIndex > 0 ? (
             <PrevBtn
               style={{ transform: "translate3d(0, 0, 0)" }}
               onClick={() => changeItemId(currentIndex - 1)}

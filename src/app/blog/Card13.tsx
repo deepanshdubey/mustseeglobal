@@ -44,6 +44,8 @@ const Card13: FC<Card13Props> = ({ className = "", post, key }) => {
 
   const postId: string = post._id;
 
+  const slug = post.slug;
+
   const router = useRouter();
 
   return (
@@ -52,7 +54,7 @@ const Card13: FC<Card13Props> = ({ className = "", post, key }) => {
         <h2 className={`nc-card-title block font-semibold text-base`}>
           <Link
             // href={`/blog/${postId}`}
-            href={postId ? `/blog/${postId}` : "/"}
+            href={slug ? `/blog/${slug}` : "/"}
             className="line-clamp-2"
             title={title}
           >
@@ -75,7 +77,7 @@ const Card13: FC<Card13Props> = ({ className = "", post, key }) => {
       </div>
 
       <Link
-        href={postId ? `/blog/${postId}` : "/"}
+        href={slug ? `/blog/${slug}` : "/"}
         className={`block relative h-full flex-shrink-0 w-2/5 sm:w-1/3 ml-3 sm:ml-5`}
       >
         <Image

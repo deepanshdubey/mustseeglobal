@@ -41,7 +41,7 @@ const StayCard: FC<StayCardProps> = ({
     id,
   } = data;
 
-  const { name, address, imageUrls, _id } = data;
+  const { name, address, imageUrls, _id, slug } = data;
 
   const [images, setImages] = useState<any>();
   useEffect(() => {
@@ -71,7 +71,7 @@ const StayCard: FC<StayCardProps> = ({
           // galleryImgs={galleryImgs}
           galleryImgs={images}
           // href={href}
-          href={_id ? `/listing-stay-detail/${_id}` : `/`}
+          href={slug ? `/listing-stay-detail/${slug}` : `/`}
           galleryClass={size === "default" ? undefined : ""}
         />
         <BtnLikeIcon isLiked={like} className="absolute right-3 top-3 z-[1]" />
@@ -152,7 +152,7 @@ const StayCard: FC<StayCardProps> = ({
       data-nc-id="StayCard"
     >
       {images && renderSliderGallery()}
-      <Link href={_id ? `/listing-stay-detail/${_id}` : `/`}>
+      <Link href={slug ? `/listing-stay-detail/${slug}` : `/`}>
         {renderContent()}
       </Link>
     </div>

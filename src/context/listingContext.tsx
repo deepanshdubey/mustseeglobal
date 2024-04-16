@@ -9,7 +9,7 @@ import {
 } from "react";
 
 interface ListingContextType {
-  listings: any[]; // Change 'any' to the appropriate type for listings
+  listings?: any; // Change 'any' to the appropriate type for listings
   data?: any[];
 }
 

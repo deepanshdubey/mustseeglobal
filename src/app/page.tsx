@@ -191,8 +191,8 @@ function PageHome() {
           <BackgroundSection className="bg-orange-50 dark:bg-black/20" />
           <SectionSliderNewCategories
             // categories={DEMO_CATS_2}
-            categories={listings}
-            categoryCardType="card4"
+            categories={listings.data}
+            categoryCardType="card5"
             itemPerRow={4}
             heading="Suggestions for discovery"
             subHeading="Popular places to stay that Must See New York recommends for you"
