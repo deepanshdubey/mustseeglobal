@@ -50,6 +50,7 @@ const StayCard2: FC<StayCard2Props> = ({
     imageUrls,
     _id,
     address,
+    slug,
   } = data;
 
   useEffect(() => {
@@ -81,7 +82,7 @@ const StayCard2: FC<StayCard2Props> = ({
             ratioClass="aspect-w-12 aspect-h-11"
             galleryImgs={images}
             imageClass="rounded-lg"
-            href={`/listing-stay-detail/${_id}`}
+            href={`/listing-stay-detail/${slug}`}
           />
         )}
         {/* <BtnLikeIcon isLiked={like} className="absolute right-3 top-3 z-[1]" /> */}
@@ -155,7 +156,7 @@ const StayCard2: FC<StayCard2Props> = ({
   return (
     <div className={`nc-StayCard2 group relative ${className}`}>
       {renderSliderGallery()}
-      <Link href={_id ? `/listing-stay-detail/${_id}` : `/`}>
+      <Link href={slug ? `/listing-stay-detail/${slug}` : `/`}>
         {renderContent()}
       </Link>
     </div>
