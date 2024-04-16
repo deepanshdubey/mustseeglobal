@@ -82,12 +82,13 @@ header > div > h1 {
 .backToTop {
   width: 20px;
   height: 20px;
-  z-index: -1;
+  z-index: -100;
+  position: relative;
 }
 
 .w-back-to-up {
   transform: scale(1.5);
-  z-index: 100;
+  z-index: 200;
 }
 
 .darkModeMoveToTop svg > circle {
@@ -112,9 +113,6 @@ header > div > h1 {
   stroke: rgb(139, 56, 248);
 }
 
-.scroll-to-top {
-  text-align: -webkit-center;
-}
 
 .listingSkeleton{
   display: grid;
