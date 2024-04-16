@@ -107,28 +107,24 @@ const Page = ({
             {/* Keep up the spirit of the desire to travel around the world */}
 
             {firstArticle?.articleTitle}
-            {/* <BackToUp
-              className={
-                isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"
-              }
-            >
-              <button>
-                <img
-                  src="https://lottie.host/embed/025dd737-5104-44a7-9503-c445bb4f6e79/SsMd2gOYxI.json"
-                  alt="moveToTop"
-                />
-                <iframe src="https://lottie.host/embed/6da84fdf-a7eb-4373-bec3-29270305ada1/6E5Yo9pAz1.json"></iframe>
-              </button>
-            </BackToUp> */}
-
             <BackToUp
               className={
                 isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"
               }
             >
-              {/* <iframe className="backToTop" src="https://lottie.host/embed/65ccd2cf-eada-41f0-9e29-6a75b0726f22/P3WEtcoyAA.json"></iframe>             */}
-              🔝
+              <button>
+              <iframe className="backToTop" src="https://lottie.host/embed/65ccd2cf-eada-41f0-9e29-6a75b0726f22/P3WEtcoyAA.json"></iframe>            
+              </button>
             </BackToUp>
+
+            {/* <BackToUp
+              className={
+                isDarkMode ? "darkModeMoveToTop" : "lightModeMoveToTop"
+              }
+            >
+              <iframe className="backToTop" src="https://lottie.host/embed/65ccd2cf-eada-41f0-9e29-6a75b0726f22/P3WEtcoyAA.json"></iframe>            
+              🔝
+            </BackToUp> */}
           </h1>
 
           <div className="w-full border-b border-neutral-100 dark:border-neutral-800"></div>
