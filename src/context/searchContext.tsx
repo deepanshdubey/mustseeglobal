@@ -30,6 +30,15 @@ export const SearchProvider = ({ children }: childrenType) => {
       name: "",
       isActive: "",
     },
+    searchValueMobile: "",
+    tab: {
+      active: "",
+      page: "",
+    },
+    hideModal: {
+      value: false,
+      isActive: false,
+    },
   });
 
   return (

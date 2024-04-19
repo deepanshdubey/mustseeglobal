@@ -2,6 +2,9 @@
 
 import { useSearchContext } from "@/context/searchContext";
 import { MapPinIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { Router } from "next/router";
 import React, { useState, useEffect, useRef, FC } from "react";
 
 interface Props {
@@ -54,12 +57,88 @@ const LocationInput: FC<Props> = ({
     setValue(defaultValue);
   }, [defaultValue]);
 
-  const handleSelectLocation = (item: string) => {
+  interface ObjectWithKeys {
+    [key: string]: string;
+  }
+  const object: ObjectWithKeys = {
+    "Things to do": "attraction",
+    Food: "restaurant",
+    Stay: "hotel",
+    Safety: "safety",
+  };
+
+  const [listings, setListings] = useState([]);
+  const [recentSearches, setRecentSearches] = useState([]);
+
+  useEffect(() => {
+    const fetchListings = async () => {
+      try {
+        let queryParams = `https://msny-backend-deepansh.vercel.app/api/v1/listings?`;
+
+        if (search.tab.active) {
+          queryParams += `category.name=${object[search.tab.active]}`;
+        }
+        if (value) {
+          queryParams += `&name=${value}`;
+        }
+
+        const response = await axios.get(queryParams);
+
+        const listing_response = response.data.data;
+
+        setListings(listing_response);
+      } catch (error) {
+        console.error("errrorr is", error);
+      }
+    };
+
+    fetchListings();
+  }, [value, search.tab]);
+
+  useEffect(() => {
+    const fetchListings = async () => {
+      try {
+        let queryParams = `https://msny-backend-deepansh.vercel.app/api/v1/listings?`;
+        if (search.tab.active) {
+          queryParams += `category.name=${object[search.tab.active]}`;
+        }
+
+        const response = await axios.get(queryParams);
+
+        const listing_response = response.data.data;
+
+        setRecentSearches(listing_response);
+      } catch (error) {
+        console.error("errrorr is", error);
+      }
+    };
+
+    fetchListings();
+  }, [search.tab]);
+
+  const router = useRouter();
+  const handleSelectLocation = (item: any) => {
+    setSearch((prevSearch: any) => ({
+      ...prevSearch,
+      hideModal: {
+        isActive: true,
+        value: true,
+      },
+    }));
+
     // DO NOT REMOVE SETTIMEOUT FUNC
     setTimeout(() => {
-      setValue(item);
-      onChange && onChange(item);
-    }, 0);
+      setSearch((prevSearch: any) => ({
+        ...prevSearch,
+        hideModal: {
+          isActive: false,
+          value: false,
+        },
+      }));
+      router.push(`/listing-stay-detail/${item.slug}`);
+      setValue(item.name);
+      onChange && onChange(item.name);
+    }, 1000);
   };
 
   const renderSearchValues = ({
@@ -67,7 +146,7 @@ const LocationInput: FC<Props> = ({
     items,
   }: {
     heading: string;
-    items: string[];
+    items: any;
   }) => {
     return (
       <>
@@ -75,18 +154,25 @@ const LocationInput: FC<Props> = ({
           {heading || "Destinations"}
         </p>
         <div className="mt-3">
-          {items.map((item) => {
-            return (
-              <div
-                className="py-2 mb-1 flex items-center space-x-3 text-sm"
-                onClick={() => handleSelectLocation(item)}
-                key={item}
-              >
-                <MapPinIcon className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
-                <span className="">{item}</span>
-              </div>
-            );
-          })}
+          {
+            // items
+
+            items.map((item: any, idx: any) => {
+              if (idx > 5) return;
+              else {
+                return (
+                  <div
+                    className="py-2 mb-1 flex items-center space-x-3 text-sm"
+                    onClick={() => handleSelectLocation(item)}
+                    key={item.id}
+                  >
+                    <MapPinIcon className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
+                    <span className="">{item.name}</span>
+                  </div>
+                );
+              }
+            })
+          }
         </div>
       </>
     );
@@ -111,31 +197,31 @@ const LocationInput: FC<Props> = ({
           </span>
         </div>
         <div className="mt-7">
-          {value ? (
-            renderSearchValues({
-              heading: "Locations",
-              items: [
-                "Afghanistan",
-                "Albania",
-                "Algeria",
-                "American Samao",
-                "Andorra",
-              ],
-            })
-          ) : (
-            <>
-              {/* renderSearchValues({
-                heading: "Popular destinations",
-                items: [
-                  "Australia",
-                  "Canada",
-                  "Germany",
-                  "United Kingdom",
-                  "United Arab Emirates",
-                ],
-              }) */}
-            </>
-          )}
+          {
+            value
+              ? renderSearchValues({
+                  heading: "Locations",
+                  items: listings,
+                })
+              : renderSearchValues({
+                  heading: "Locations",
+                  items: recentSearches,
+                })
+            // <>
+
+            //   renderSearchValues({
+            //     heading: "Popular destinations",
+            //     items: [
+            //       "Australia",
+            //       "Canada",
+            //       "Germany",
+            //       "United Kingdom",
+            //       "United Arab Emirates",
+            //     ],
+            //   })
+
+            // </>
+          }
         </div>
       </div>
     </div>

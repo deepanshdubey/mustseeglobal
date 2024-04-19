@@ -74,26 +74,32 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
           const active = tab === tabActive;
           return (
             <li
-              onClick={() => {
-                setTabActive(tab);
-                setSearch((prevSearch: any) => ({
-                  ...prevSearch,
-                  category: {
-                    name: object[tab],
-                    isActive: true,
-                  },
-                }));
+              onClick={
+                page == "/"
+                  ? () => {
+                      setTabActive(tab);
+                      setSearch((prevSearch: any) => ({
+                        ...prevSearch,
+                        page,
+                        category: {
+                          name: object[tab],
+                          isActive: true,
+                          // page,
+                        },
+                      }));
 
-                setTimeout(() => {
-                  setSearch((prevSearch: any) => ({
-                    ...prevSearch,
-                    category: {
-                      name: object[tab],
-                      isActive: false,
-                    },
-                  }));
-                }, 2000);
-              }}
+                      setTimeout(() => {
+                        setSearch((prevSearch: any) => ({
+                          ...prevSearch,
+                          category: {
+                            name: object[tab],
+                            isActive: false,
+                          },
+                        }));
+                      }, 2000);
+                    }
+                  : () => {}
+              }
               className={`flex-shrink-0 flex items-center cursor-pointer text-sm lg:text-base font-medium ${
                 active
                   ? ""

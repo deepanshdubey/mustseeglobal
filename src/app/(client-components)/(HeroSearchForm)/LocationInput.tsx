@@ -5,6 +5,8 @@ import React, { useState, useRef, useEffect, FC } from "react";
 import ClearDataButton from "./ClearDataButton";
 import { log } from "console";
 import { useSearchContext } from "@/context/searchContext";
+import axios from "axios";
+import { usePathname, useRouter } from "next/navigation";
 
 export interface LocationInputProps {
   placeHolder?: string;
@@ -63,14 +65,82 @@ const LocationInput: FC<LocationInputProps> = ({
     // CLICK OUT_SIDE
     setShowPopover(false);
   };
-
-  const handleSelectLocation = (item: string) => {
-    setValue(item);
+  const currentPage = usePathname();
+  const router = useRouter();
+  const handleSelectLocation = (item: any) => {
+    setValue(item.name);
 
     setLocation(item);
     setShowPopover(false);
-    setSearch((prevSearch: any) => ({ ...prevSearch, page: "/", name: item }));
+    // setSearch((prevSearch: any) => ({
+    //   ...prevSearch,
+    //   name: item.name,
+    // }));
+
+    router.push(`/listing-stay-detail/${item.slug}`);
   };
+
+  const [listings, setListings] = useState([]);
+  const [recentSearches, setRecentSearches] = useState([]);
+  const [searchValues, setSearchValues] = useState([]);
+
+  const [firstSearch, setFirstSearch] = useState(true);
+
+  interface ObjectWithKeys {
+    [key: string]: string;
+  }
+
+  const object: ObjectWithKeys = {
+    "/food": "restaurant",
+    "/thingstodo": "attraction",
+    "/stay": "hotel",
+    "/safety": "safety",
+    "/maps": "geographic",
+    "/events": "events",
+  };
+
+  useEffect(() => {
+    const fetchListings = async () => {
+      if (firstSearch || search.category.isActive) {
+        try {
+          let queryParams = `https://msny-backend-deepansh.vercel.app/api/v1/listings?`;
+          if (search.category.isActive && currentPage == "/") {
+            queryParams += `category.name=${search.category.name}`;
+          } else if (currentPage != "/") {
+            queryParams += `category.name=${object[currentPage]}`;
+          }
+
+          const response = await axios.get(queryParams);
+
+          const listing_response = response.data.data;
+
+          setListings(listing_response);
+          //@ts-ignore
+          const arr: any = [];
+          listing_response.slice(0, 5).map((listing: any) => {
+            arr.push(listing);
+          });
+          setRecentSearches(arr);
+          setSearchValues(arr);
+          setFirstSearch(false);
+        } catch (error) {
+          console.error("errrorr is", error);
+        }
+      }
+    };
+
+    fetchListings();
+  }, [search, currentPage]);
+
+  useEffect(() => {
+    setSearchValues((prevValue) => {
+      const arr = listings?.filter((listing: any) =>
+        listing.name.toLowerCase().includes(value.toLowerCase())
+      );
+
+      return arr?.slice(0, 5);
+    });
+  }, [listings, value]);
 
   const renderRecentSearches = () => {
     return (
@@ -79,25 +149,29 @@ const LocationInput: FC<LocationInputProps> = ({
           Recent searches
         </h3>
         <div className="mt-2">
-          {[
-            "Hamptons, Suffolk County, NY",
-            "Las Vegas, NV, United States",
-            "Ueno, Taito, Tokyo",
-            "Ikebukuro, Toshima, Tokyo",
-          ].map((item) => (
-            <span
-              onClick={() => handleSelectLocation(item)}
-              key={item}
-              className="flex px-4 sm:px-8 items-center space-x-3 sm:space-x-4 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
-            >
-              <span className="block text-neutral-400">
-                <ClockIcon className="h-4 sm:h-6 w-4 sm:w-6" />
+          {
+            // [
+            //   "Hamptons, Suffolk County, NY",
+            //   "Las Vegas, NV, United States",
+            //   "Ueno, Taito, Tokyo",
+            //   "Ikebukuro, Toshima, Tokyo",
+            // ]
+
+            recentSearches?.map((item: any) => (
+              <span
+                onClick={() => handleSelectLocation(item)}
+                key={item}
+                className="flex px-4 sm:px-8 items-center space-x-3 sm:space-x-4 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+              >
+                <span className="block text-neutral-400">
+                  <ClockIcon className="h-4 sm:h-6 w-4 sm:w-6" />
+                </span>
+                <span className=" block font-medium text-neutral-700 dark:text-neutral-200">
+                  {item.name}
+                </span>
               </span>
-              <span className=" block font-medium text-neutral-700 dark:text-neutral-200">
-                {item}
-              </span>
-            </span>
-          ))}
+            ))
+          }
         </div>
       </>
     );
@@ -106,25 +180,28 @@ const LocationInput: FC<LocationInputProps> = ({
   const renderSearchValue = () => {
     return (
       <>
-        {[
-          "Ha Noi, Viet Nam",
-          "San Diego, CA",
-          "Humboldt Park, Chicago, IL",
-          "Bangor, Northern Ireland",
-        ].map((item) => (
-          <span
-            onClick={() => handleSelectLocation(item)}
-            key={item}
-            className="flex px-4 sm:px-8 items-center space-x-3 sm:space-x-4 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
-          >
-            <span className="block text-neutral-400">
-              <ClockIcon className="h-4 w-4 sm:h-6 sm:w-6" />
+        {
+          // [
+          //   "Ha Noi, Viet Nam",
+          //   "San Diego, CA",
+          //   "Humboldt Park, Chicago, IL",
+          //   "Bangor, Northern Ireland",
+          // ]
+          searchValues?.map((item: any) => (
+            <span
+              onClick={() => handleSelectLocation(item)}
+              key={item}
+              className="flex px-4 sm:px-8 items-center space-x-3 sm:space-x-4 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+            >
+              <span className="block text-neutral-400">
+                <ClockIcon className="h-4 w-4 sm:h-6 sm:w-6" />
+              </span>
+              <span className="block font-medium text-neutral-700 dark:text-neutral-200">
+                {item.name}
+              </span>
             </span>
-            <span className="block font-medium text-neutral-700 dark:text-neutral-200">
-              {item}
-            </span>
-          </span>
-        ))}
+          ))
+        }
       </>
     );
   };
@@ -148,9 +225,10 @@ const LocationInput: FC<LocationInputProps> = ({
             autoFocus={showPopover}
             onChange={(e) => {
               setValue(e.currentTarget.value);
+
               setSearch((prevSearch: any) => ({
                 ...prevSearch,
-                page: "/",
+                page: currentPage,
                 name: e.target.value,
               }));
             }}
