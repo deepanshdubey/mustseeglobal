@@ -55,7 +55,7 @@ export const ArticleProvider = ({ children }: childrenType) => {
         //   `http://localhost:9000/api/v1/articles`
         // );
         const articles_response = response.data;
-        // console.log("article response", response.data);
+        //
 
         setArticles(articles_response);
 
@@ -64,7 +64,7 @@ export const ArticleProvider = ({ children }: childrenType) => {
           return article.city;
         });
         setCities(cities);
-        // console.log("cities", cities);
+        //
       } catch (error) {
         console.error(error);
       }

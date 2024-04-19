@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Dialog, Tab, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/solid";
@@ -9,9 +9,83 @@ import { useTimeoutFn } from "react-use";
 import StaySearchForm from "./(stay-search-form)/StaySearchForm";
 import CarsSearchForm from "./(car-search-form)/CarsSearchForm";
 import FlightSearchForm from "./(flight-search-form)/FlightSearchForm";
+import { useSearchContext } from "@/context/searchContext";
+import { usePathname, useRouter } from "next/navigation";
 
 const HeroSearchForm2Mobile = () => {
   const [showModal, setShowModal] = useState(false);
+  const currentPage = usePathname();
+  const pageToActiveTab: ObjectWithKeys = {
+    "/thingstodo": "Things to do",
+    "/food": "Food",
+    "/stay": "Stay",
+    "/safety": "Safety",
+  };
+  const [activeTab, setActiveTab] = useState(""); // Initialize active tab index
+
+  useEffect(() => {
+    if (currentPage != "/") {
+      setActiveTab(pageToActiveTab[currentPage]);
+    } else {
+      setActiveTab("Things to do");
+    }
+  }, [currentPage]);
+
+  const [activeSearch, setActiveSearch] = useState(false);
+  const { search, setSearch } = useSearchContext();
+  const router = useRouter();
+
+  const handleTabClick = (index: any) => {
+    if (currentPage == "/") {
+      setActiveTab(index);
+    }
+  };
+  useEffect(() => {
+    setTimeout(() => {}, 2000);
+  }, [activeSearch]);
+
+  interface ObjectWithKeys {
+    [key: string]: string;
+  }
+  const object: ObjectWithKeys = {
+    "Things to do": "attraction",
+    Food: "restaurant",
+    Stay: "hotel",
+    Safety: "safety",
+  };
+
+  const searchListings = () => {
+    //Redirection to relevant category page
+
+    setSearch((prevSearch: any) => ({
+      ...prevSearch,
+      page: currentPage,
+      category: {
+        ...prevSearch.category,
+        name: object[activeTab],
+      },
+      triggerMobileSearch: true,
+    }));
+
+    setActiveSearch(true);
+
+    // setTimeout(() => {
+    //   //Implementing searching
+    //   setSearch((prevSearch: any) => ({
+    //     ...prevSearch,
+    //     page: activeTab,
+    //     isActive: true,
+    //   }));
+
+    //   setTimeout(() => {
+    //     setSearch((prevSearch: any) => ({
+    //       ...prevSearch,
+    //       page: activeTab,
+    //       isActive: false,
+    //     }));
+    //   }, 2000);
+    // }, 4000);
+  };
 
   // FOR RESET ALL DATA WHEN CLICK CLEAR BUTTON
   const [showDialog, setShowDialog] = useState(false);
@@ -33,13 +107,14 @@ const HeroSearchForm2Mobile = () => {
       >
         <MagnifyingGlassIcon className="flex-shrink-0 w-5 h-5" />
 
-        <div className="ml-3 flex-1 text-left overflow-hidden">
+        <div className="ml-3 flex-1 text-left overflow-hidden py-1">
           <span className="block font-medium text-sm">Where to?</span>
-          <span className="block mt-0.5 text-xs font-light text-neutral-500 dark:text-neutral-400 ">
-            <span className="line-clamp-1">
-              Anywhere • Any week • Add guests
-            </span>
-          </span>
+          {/* <span className="block mt-0.5 text-xs font-light text-neutral-500 dark:text-neutral-400 "> */}
+          {/* <span className="line-clamp-1"> */}
+          {/* Anywhere • Any week • Add guests */}
+          {/* Anywhere • Any week • Add guests */}
+          {/* </span> */}
+          {/* </span> */}
         </div>
 
         <span className="absolute right-2 top-1/2 transform -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full border border-neutral-200 dark:border-neutral-6000 dark:text-neutral-300">
@@ -95,15 +170,23 @@ const HeroSearchForm2Mobile = () => {
                                 <div className="relative focus:outline-none focus-visible:ring-0 outline-none select-none">
                                   <div
                                     className={`${
-                                      selected
+                                      item == activeTab
                                         ? "text-black dark:text-white"
                                         : ""
                                     }  `}
+                                    onClick={() =>
+                                      currentPage == "/"
+                                        ? handleTabClick(item)
+                                        : () => {}
+                                    }
                                   >
                                     {item}
                                   </div>
-                                  {selected && (
-                                    <span className="absolute inset-x-0 top-full border-b-2 border-black dark:border-white"></span>
+                                  {item == activeTab && (
+                                    <span
+                                      // onClick={handleTabClick(item)}
+                                      className="absolute inset-x-0 top-full border-b-2 border-black dark:border-white "
+                                    ></span>
                                   )}
                                 </div>
                               )}
@@ -127,14 +210,12 @@ const HeroSearchForm2Mobile = () => {
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
                               {/* <CarsSearchForm /> */}
                               <StaySearchForm />
-
                             </div>
                           </Tab.Panel>
                           <Tab.Panel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
                               {/* <FlightSearchForm /> */}
                               <StaySearchForm />
-
                             </div>
                           </Tab.Panel>
                         </Tab.Panels>
@@ -153,6 +234,7 @@ const HeroSearchForm2Mobile = () => {
                         <ButtonSubmit
                           onClick={() => {
                             closeModal();
+                            searchListings();
                           }}
                         />
                       </div>

@@ -57,14 +57,14 @@ const ListingImageGallery: FC<Props> = ({
   onClose,
   isShowModal,
 }) => {
-  // console.log("images are", images);
+  //
 
   const [imagesArr, setImages] = useState();
   const fetchListing = () => {
     var page = thisPathname.slice(1);
     var id = page.split("/").pop();
 
-    // console.log("id is", id);
+    //
 
     return fetch(
       `https://msny-backend-deepansh.vercel.app/api/v1/listings/${id}`
@@ -76,7 +76,7 @@ const ListingImageGallery: FC<Props> = ({
         return response.json();
       })
       .then((data) => {
-        // console.log("LISTINGS hai in image gallery", data.imageUrls);
+        //
         return Object.values(data.imageUrls);
       })
       .catch((error) => {
@@ -88,7 +88,7 @@ const ListingImageGallery: FC<Props> = ({
   useEffect(() => {
     const fetch = async () => {
       const data: any = await fetchListing();
-      // console.log("response is", data);
+      //
       setImages(data);
     };
 

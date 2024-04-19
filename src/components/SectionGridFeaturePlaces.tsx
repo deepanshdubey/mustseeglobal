@@ -13,11 +13,10 @@ import Pagination from "@/shared/Pagination";
 import { useSearchContext } from "@/context/searchContext";
 import { useScratch } from "react-use";
 // import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
-
+import "react-loading-skeleton/dist/skeleton.css";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
 
 // OTHER DEMO WILL PASS PROPS
 const DEMO_DATA: StayDataType[] = DEMO_STAY_LISTINGS.filter((_, i) => i < 8);
@@ -45,7 +44,7 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   cardType = "card2",
   from,
 }) => {
-  // console.log("from in SectionGridFeaturePlaces", from);
+  //
 
   const renderCard = (stay: StayDataType) => {
     let CardName = StayCard;
@@ -69,10 +68,10 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   const [totalPages, setTotalPages] = useState();
   const { search, setSearch } = useSearchContext();
   const [firstSearch, setFirstSearch] = useState(true);
+  const [pageChanged, setPageChanged] = useState(true);
+  const [oldQuery, setOldQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const currentPage = usePathname();
-
-  console.log("first search", firstSearch);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,19 +79,18 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
         let queryParams = `https://msny-backend-deepansh.vercel.app/api/v1/listings?`;
 
         if (page) {
-          queryParams += `page=${page}&limit=16`;
+          queryParams += `page=1&limit=16`;
         }
         if (search.isActive && search.name && search.page == currentPage) {
           queryParams += `&name=${search.name}`;
           // setSearch((prevValue) => ({ ...prevValue, isActive: false }));
         }
 
-        if (search.category.name) {
+        if (search.category.name && search.page == currentPage) {
           queryParams += `&category.name=${search.category.name}`;
         }
 
-        console.log("query params is", queryParams);
-
+        setOldQuery(queryParams);
         try {
           const response = await fetch(
             // `https://msny-backend-deepansh.vercel.app/api/v1/listings?category.name=${object[page]}`
@@ -100,12 +98,42 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
           );
           const res = await response.json();
 
-          // console.log("response is ", res);
+          //
 
           setListings(res.data);
           setTotalPages(res.totalPages);
           if (firstSearch) setFirstSearch(false);
-          // console.log("LISTINGS in sectionfiltercard", res.data);
+          //
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      } else if (pageChanged) {
+        // Split the query string into an array of key-value pairs
+        let paramsArray = oldQuery.split("?")[1].split("&");
+
+        // Filter out the 'page' parameter
+        paramsArray = paramsArray.filter((param) => !param.startsWith("page="));
+
+        // Reconstruct the updated query string
+        let updatedQueryString = paramsArray.join("&");
+
+        setPageChanged(false);
+        const queryParams = `?page=${page}&` + updatedQueryString;
+
+        try {
+          const response = await fetch(
+            `https://msny-backend-deepansh.vercel.app/api/v1/listings` +
+              queryParams
+          );
+
+          setOldQuery(
+            `https://msny-backend-deepansh.vercel.app/api/v1/listings` +
+              queryParams
+          );
+          const res = await response.json();
+
+          setListings(res.data);
+          setTotalPages(res.totalPages);
         } catch (error) {
           console.error("Error fetching data:", error);
         }
@@ -118,29 +146,35 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
 
   return (
     <>
-      {!loading ? (<div className="nc-SectionGridFeaturePlaces relative">
-        <HeaderFilter
-          tabActive={"New York"}
-          subHeading={subHeading}
-          tabs={tabs}
-          heading={heading}
-          from={from}
-        />
-        <div
-          className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${gridClass}`}
-        >
-          {/* {stayListings.map((stay) => renderCard(stay))} */}
-          {listings.map((stay) => renderCard(stay))}
-        </div>
-        <div className="flex mt-8 mb-8 justify-center items-center">
-          {/* <ButtonPrimary loading>Show me more</ButtonPrimary> */}
-          {/* <Link href={"/listings"}>
+      {!loading ? (
+        <div className="nc-SectionGridFeaturePlaces relative">
+          <HeaderFilter
+            tabActive={"New York"}
+            subHeading={subHeading}
+            tabs={tabs}
+            heading={heading}
+            from={from}
+          />
+          <div
+            className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${gridClass}`}
+          >
+            {/* {stayListings.map((stay) => renderCard(stay))} */}
+            {listings.map((stay) => renderCard(stay))}
+          </div>
+          <div className="flex mt-8 mb-8 justify-center items-center">
+            {/* <ButtonPrimary loading>Show me more</ButtonPrimary> */}
+            {/* <Link href={"/listings"}>
           <ButtonPrimary>Show me more</ButtonPrimary>
         </Link> */}
-          <Pagination page={page} setPage={setPage} totalPages={totalPages} />
+            <Pagination
+              page={page}
+              setPage={setPage}
+              totalPages={totalPages}
+              setPageChanged={setPageChanged}
+            />
+          </div>
         </div>
-      </div>) : (
-
+      ) : (
         <>
           <div className="listingSkeleton">
             <Box sx={{ pt: 0.5 }}>
@@ -177,11 +211,6 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
             </Box>
           </div>
         </>
-
-
-
-
-
 
         // <Skeleton variant="rectangular" width={210} height={118} />
       )}

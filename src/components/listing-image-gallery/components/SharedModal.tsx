@@ -40,7 +40,7 @@ export default function SharedModal({
   currentPhoto,
   direction,
 }: SharedModalProps) {
-  // console.log("images in shared modal", images);
+  //
 
   const [loaded, setLoaded] = useState(false);
 
@@ -63,7 +63,7 @@ export default function SharedModal({
   });
 
   let currentImage = images ? images[index] : currentPhoto;
-  // console.log("current image", currentImage);
+  //
 
   return (
     <MotionConfig

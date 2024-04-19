@@ -7,7 +7,7 @@ const LikeSaveBtns = () => {
 
   const copyCurrentLink = () => {
     const link = window.location.href;
-    console.log("path", window.location.href);
+
     navigator.clipboard.writeText(link);
     // toast.success("Copied");
     toast.success("Copied");

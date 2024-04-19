@@ -50,7 +50,6 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
   };
 
   var page = usePathname();
-  console.log("current page", page);
 
   const object: ObjectWithKeys = {
     Food: "restaurant",
@@ -71,8 +70,6 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
       <ul className="ml-2 sm:ml-6 md:ml-12 flex space-x-5 sm:space-x-8 lg:space-x-11 overflow-x-auto hiddenScrollbar">
         {tabs.map((tab) => {
           // const active = tab === tabActive;
-          console.log("current tab is", tab);
-          console.log("categories[currentPage] tab is", categories[page]);
 
           const active = tab === tabActive;
           return (
@@ -116,8 +113,6 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
   };
 
   const renderForm = () => {
-    console.log("active tab", tabActive);
-
     switch (tabActive) {
       case "Stays":
         return <StaySearchForm />;

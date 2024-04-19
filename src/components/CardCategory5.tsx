@@ -19,7 +19,7 @@ const CardCategory5: FC<CardCategory5Props> = ({
   from,
 }) => {
   // const { count, name, href = "/", thumbnail } = taxonomy;
-  // console.log("frommmmmmm", from);
+  //
 
   if (from == "/") {
     const {
@@ -42,13 +42,13 @@ const CardCategory5: FC<CardCategory5Props> = ({
     const renderImages = (imageUrls: any) => {
       const imageArray = [];
       for (const key in imageUrls) {
-        // console.log("keysss", key);
+        //
 
         if (imageUrls.hasOwnProperty(key)) {
           const value = imageUrls[key];
           imageArray.push(value);
         }
-        // console.log("imagesssssssss", imageArray);
+        //
       }
       setImages(imageArray);
     };
@@ -91,7 +91,7 @@ const CardCategory5: FC<CardCategory5Props> = ({
   } else {
     const { articleTitle, thumbnailImage, imageUrls, _id, slug } = taxonomy;
 
-    // console.log("thumbnail image ", thumbnailImage);
+    //
 
     return (
       <Link

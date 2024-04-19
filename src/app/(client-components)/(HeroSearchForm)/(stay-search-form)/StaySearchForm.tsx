@@ -9,12 +9,12 @@ import { useSearchContext } from "@/context/searchContext";
 const StaySearchForm: FC<{}> = ({}) => {
   const [location, setLocation] = useState();
 
-  // console.log("location in search form", location);
+  //
 
   const renderForm = () => {
     // const searchListings = (e) => {
     //   e.preventDefault();
-    //   console.log("listings search");
+    //
     // };
 
     const { search, setSearch } = useSearchContext();
@@ -22,7 +22,6 @@ const StaySearchForm: FC<{}> = ({}) => {
 
     const searchListings = (e: any) => {
       e.preventDefault();
-      console.log("listings search");
 
       setSearch((prevSearch: any) => ({
         ...prevSearch,

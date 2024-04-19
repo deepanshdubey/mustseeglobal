@@ -23,7 +23,7 @@ const StayCard: FC<StayCardProps> = ({
   className = "",
   data = DEMO_DATA,
 }) => {
-  // console.log("dataaa in staycard", data);
+  //
 
   const {
     galleryImgs,
@@ -51,13 +51,13 @@ const StayCard: FC<StayCardProps> = ({
   const renderImages = (imageUrls: any) => {
     const imageArray = [];
     for (const key in imageUrls) {
-      // console.log("keysss", key);
+      //
 
       if (imageUrls.hasOwnProperty(key)) {
         const value = imageUrls[key];
         imageArray.push(value);
       }
-      // console.log("imagesssssssss", imageArray);
+      //
     }
     setImages(imageArray);
   };

@@ -32,7 +32,7 @@ const SectionHeroArchivePage: FC<SectionHeroArchivePageProps> = ({
   rightImage = thingsToDoPng,
 }) => {
   const page = usePathname();
-  // console.log("page", page);
+  //
 
   interface Categories {
     [key: string]: string;
@@ -65,8 +65,6 @@ const SectionHeroArchivePage: FC<SectionHeroArchivePageProps> = ({
 
   useEffect(() => {
     const fetchListings = async () => {
-      console.log("object is", object[herosectionpage.slice(1)]);
-
       try {
         const response = await axios.get(
           `https://msny-backend-deepansh.vercel.app/api/v1/listings?category.name=${
@@ -75,7 +73,6 @@ const SectionHeroArchivePage: FC<SectionHeroArchivePageProps> = ({
         );
 
         const listing_response = response.data.totalResults;
-        console.log("response is", listing_response);
 
         setListingsCount(listing_response);
       } catch (error) {

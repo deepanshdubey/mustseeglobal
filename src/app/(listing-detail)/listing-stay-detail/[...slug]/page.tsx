@@ -73,7 +73,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
         const data = await response.json();
         setListings(data.data[0]);
         renderImages(data.data[0].imageUrls);
-        console.log("LISTINGS", data);
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -83,18 +83,18 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
     fetchData();
   }, []);
 
-  // console.log("images state", images);
+  //
 
   const renderImages = (imageUrls: any) => {
     const imageArray = [];
     for (const key in imageUrls) {
-      // console.log("keysss", key);
+      //
 
       if (imageUrls.hasOwnProperty(key)) {
         const value = imageUrls[key];
         imageArray.push(value);
       }
-      // console.log("imagesssssssss", imageArray);
+      //
     }
     setImages(imageArray);
   };
@@ -103,7 +103,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
 
   const googlemapsURL = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDVSnvaLivcoPmxqKJrDl8ZMDRYwTFJZFw&q=${listings?.latitude},${listings?.longitude}`;
 
-  // console.log("maps key", process.env.MAP_KEY);
+  //
 
   let [isOpenModalAmenities, setIsOpenModalAmenities] = useState(false);
 

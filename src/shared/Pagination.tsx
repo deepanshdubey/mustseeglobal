@@ -98,10 +98,12 @@ const Pagination: FC<any> = ({
   page,
   setPage = () => {},
   totalPages,
+  setPageChanged,
 }) => {
   const handlePagination = (page: any) => {
-    // console.log("index in pagination", page);
+    //
     setPage(page);
+    setPageChanged(true);
   };
 
   const renderPaginationItems = () => {

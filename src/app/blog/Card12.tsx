@@ -20,7 +20,7 @@ const Card12: FC<Card12Props> = ({
   post = DEMO_POSTS[0],
 }) => {
   const { articles } = useArticleContext();
-  // console.log("articles in card12.tsx", articles);
+  //
 
   const {
     title: postTitle,
@@ -33,13 +33,13 @@ const Card12: FC<Card12Props> = ({
   const title =
     (articles && articles.length > 0 ? articles[0].articleTitle : "") ||
     postTitle;
-  // console.log(title);
+  //
 
   const desc =
     (articles && articles.length > 0 ? articles[0].articleContent : "") ||
     postDesc;
-  // console.log(desc);
-  // console.log("href---", href);
+  //
+  //
 
   return (
     <div className={`nc-Card12 group relative flex flex-col ${className}`}>

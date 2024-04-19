@@ -32,7 +32,7 @@ const Card3: FC<Card3Props> = ({ className = "h-full", post }) => {
     _id,
     slug,
   } = post;
-  // console.log("post", post);
+  //
 
   return (
     <div

@@ -47,7 +47,7 @@ export const ListingProvider = ({ children }: childrenType) => {
         //   `http://localhost:9000/api/v1/listings`
         // );
         const listing_response = response.data;
-        // console.log("listing response", response.data);
+        //
 
         setListings(listing_response);
       } catch (error) {

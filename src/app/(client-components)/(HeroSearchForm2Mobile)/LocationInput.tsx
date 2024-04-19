@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchContext } from "@/context/searchContext";
 import { MapPinIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import React, { useState, useEffect, useRef, FC } from "react";
 
@@ -20,6 +21,34 @@ const LocationInput: FC<Props> = ({
   const [value, setValue] = useState("");
   const containerRef = useRef(null);
   const inputRef = useRef(null);
+  const { search, setSearch } = useSearchContext();
+
+  useEffect(() => {
+    if (search.triggerMobileSearch) {
+      setSearch((prevSearch: any) => ({
+        ...prevSearch,
+        name: value,
+        isActive: true,
+        category: {
+          ...prevSearch.category,
+          isActive: true,
+        },
+      }));
+
+      setTimeout(() => {
+        setSearch((prevSearch: any) => ({
+          ...prevSearch,
+          isActive: false,
+          triggerMobileSearch: false,
+
+          category: {
+            ...prevSearch.category,
+            isActive: false,
+          },
+        }));
+      }, 2000);
+    }
+  }, [search]);
 
   useEffect(() => {
     setValue(defaultValue);
@@ -82,18 +111,20 @@ const LocationInput: FC<Props> = ({
           </span>
         </div>
         <div className="mt-7">
-          {value
-            ? renderSearchValues({
-                heading: "Locations",
-                items: [
-                  "Afghanistan",
-                  "Albania",
-                  "Algeria",
-                  "American Samao",
-                  "Andorra",
-                ],
-              })
-            : renderSearchValues({
+          {value ? (
+            renderSearchValues({
+              heading: "Locations",
+              items: [
+                "Afghanistan",
+                "Albania",
+                "Algeria",
+                "American Samao",
+                "Andorra",
+              ],
+            })
+          ) : (
+            <>
+              {/* renderSearchValues({
                 heading: "Popular destinations",
                 items: [
                   "Australia",
@@ -102,7 +133,9 @@ const LocationInput: FC<Props> = ({
                   "United Kingdom",
                   "United Arab Emirates",
                 ],
-              })}
+              }) */}
+            </>
+          )}
         </div>
       </div>
     </div>
