@@ -82,8 +82,8 @@ export const NAVIGATION_DEMO: NavItemType[] = [
 export const NAVIGATION_DEMO_2: NavItemType[] = [
   {
     id: ncNanoId(),
-    href: "/",
-    name: "Home",
+    href: "/thingstodo",
+    name: "Things to do",
     type: "dropdown",
     isNew: true,
   },
