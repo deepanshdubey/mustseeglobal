@@ -118,3 +118,41 @@ header > div > h1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+@media (max-width: 580px) {
+  .footerLogo a svg {
+    /* height: 20em; */
+    width: 10em !important; 
+  }
+}
+
+@media (max-width: 500px) {
+  .footerLogo a svg {
+    /* height: 15em !important; */
+    /* width: 1rem !important;  */
+  }
+}
+
+@media (max-width: 500px) {
+  .footerLogo a svg {
+    /* height: 15em !important; */
+    /* width: 1rem !important;  */
+  }
+}
+
+@media (max-width: 1024px) {
+  .footerLogoSocials{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .msny-navbar a svg{
+    width: 10em !important;
+
+  }
+
+  .msny-navbar a svg{
+    width: 8em !important;
+
+  }
+}
