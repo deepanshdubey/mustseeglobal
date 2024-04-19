@@ -18,7 +18,7 @@ export default function Modal({
   images?: any;
   onClose?: () => void;
 }) {
-  // console.log("Images array in modal", images);
+  //
 
   let overlayRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();

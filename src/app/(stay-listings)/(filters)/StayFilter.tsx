@@ -296,7 +296,6 @@ const TabFilters = () => {
                           label={item.name}
                           subLabel={item.description}
                           onChange={(e) => {
-                            console.log("location checkbox changed", e);
                             setFilter((prev: any) => ({
                               ...prev,
                               rating: item.value,

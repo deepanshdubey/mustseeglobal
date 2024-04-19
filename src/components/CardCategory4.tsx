@@ -24,8 +24,6 @@ const CardCategory4: FC<CardCategory4Props> = ({
     _id,
   } = taxonomy;
 
-  console.log("i am in card 4", taxonomy);
-
   const [images, setImages] = useState<any>();
 
   useEffect(() => {
@@ -35,13 +33,13 @@ const CardCategory4: FC<CardCategory4Props> = ({
   const renderImages = (imageUrls: any) => {
     const imageArray = [];
     for (const key in imageUrls) {
-      // console.log("keysss", key);
+      //
 
       if (imageUrls.hasOwnProperty(key)) {
         const value = imageUrls[key];
         imageArray.push(value);
       }
-      // console.log("imagesssssssss", imageArray);
+      //
     }
     setImages(imageArray);
   };

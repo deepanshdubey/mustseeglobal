@@ -41,7 +41,7 @@ const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
   useEffect(() => {
     posts = articles;
   }, [articles]);
-  // console.log("post in sectionlatestposts", posts);
+  //
   const [page, setPage] = useState(1);
 
   // Checking pagination login
@@ -49,7 +49,7 @@ const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
   // const [articles, setArticles] = useState();
 
   // useEffect(() => {
-  //   console.log("page", page);
+  //
 
   //   const fetchArticles = async () => {
   //     const query = `page=${page}&limit=5`;

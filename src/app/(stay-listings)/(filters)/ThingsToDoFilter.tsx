@@ -245,7 +245,6 @@ const TabFilters = () => {
     duration: "",
     location: "",
   });
-  console.log("filters are", filter);
 
   const renderXClear = () => {
     return (
@@ -300,7 +299,7 @@ const TabFilters = () => {
   //                         label={item.name}
   //                         subLabel={item.description}
   //                         onChange={(e) => {
-  //                           console.log("age checkbox changed", e);
+  //
   //                           setFilter((prev) => ({ ...prev, age: item.value }));
   //                         }}
   //                       />
@@ -361,7 +360,6 @@ const TabFilters = () => {
                           label={item.name}
                           subLabel={item.description}
                           onChange={(e) => {
-                            console.log("age checkbox changed", e);
                             // @ts-ignore
                             setFilter((prev) => ({ ...prev, age: item.value }));
                           }}
@@ -423,7 +421,6 @@ const TabFilters = () => {
                           label={item.name}
                           subLabel={item.description}
                           onChange={(e) => {
-                            console.log("age checkbox changed", e);
                             // @ts-ignore
                             setFilter((prev) => ({ ...prev, age: item.value }));
                           }}
@@ -542,7 +539,6 @@ const TabFilters = () => {
                           label={item.name}
                           subLabel={item.description}
                           onChange={(e) => {
-                            console.log("location checkbox changed", e);
                             // @ts-ignore
                             setFilter((prev) => ({
                               ...prev,
@@ -607,7 +603,6 @@ const TabFilters = () => {
                           label={item.name}
                           subLabel={item.description}
                           onChange={(e) => {
-                            console.log("location checkbox changed", e);
                             // @ts-ignore
                             setFilter((prev) => ({
                               ...prev,

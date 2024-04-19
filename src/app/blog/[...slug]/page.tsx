@@ -36,10 +36,10 @@ const Page = ({
   params: { stepIndex: string; slug: string[] };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
-  // console.log(params.slug[0]);
+  //
 
   // const { slug } = router.query;
-  // console.log(slug);
+  //
 
   // const [article, setArticle] = useState<ArticleType | undefined>(undefined);
   const { articles } = useArticleContext();
@@ -67,8 +67,6 @@ const Page = ({
   const { listings } = useListingContext();
   useEffect(() => {
     const fetchArticle = async () => {
-      console.log("slug is", slug[0]);
-
       try {
         const response = await axios.get(
           `https://msny-backend-deepansh.vercel.app/api/v1/articles/${slug[0]}`
@@ -81,10 +79,10 @@ const Page = ({
         // setArticle(article);
         setfirstArticle(article);
 
-        // console.log("single article", article);
+        //
 
         // let first = article[0]
-        // console.log(firstArticle, "first article");
+        //
         setLoading(false); // Set loading to false when data is received
       } catch (error) {
         console.error("error while fetching single article", error);
@@ -113,7 +111,10 @@ const Page = ({
               }
             >
               <button>
-              <iframe className="backToTop" src="https://lottie.host/embed/65ccd2cf-eada-41f0-9e29-6a75b0726f22/P3WEtcoyAA.json"></iframe>            
+                <iframe
+                  className="backToTop"
+                  src="https://lottie.host/embed/65ccd2cf-eada-41f0-9e29-6a75b0726f22/P3WEtcoyAA.json"
+                ></iframe>
               </button>
             </BackToUp>
 

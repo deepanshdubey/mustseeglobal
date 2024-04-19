@@ -15,7 +15,7 @@ export interface SectionMagazine5Props {
 
 const SectionMagazine5: FC<SectionMagazine5Props> = ({ posts }) => {
   const { articles } = useArticleContext();
-  // console.log("section magazine", articles);
+  //
 
   // posts = articles
   return (

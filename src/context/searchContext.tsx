@@ -25,6 +25,7 @@ export const SearchProvider = ({ children }: childrenType) => {
     page: "",
     name: "",
     isActive: false,
+    triggerMobileSearch: false,
     category: {
       name: "",
       isActive: "",

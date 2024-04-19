@@ -21,7 +21,6 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
   const { listings } = useListingContext();
   const path = usePathname();
   const slug = path.split("/")[2];
-  console.log("pathname is", slug);
 
   const handleCloseModalImageGallery = () => {
     let params = new URLSearchParams(document.location.search);
@@ -30,21 +29,16 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
   };
 
   const fetchListing = (id: any) => {
-    console.log("slug is", slug);
-
     return fetch(
       `https://msny-backend-deepansh.vercel.app/api/v1/listings/${slug}`
     )
       .then((response) => {
-        console.log("response is", response);
-
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         return response.json();
       })
       .then((data) => {
-        console.log("LISTINGS hai", data.data.imageUrls);
         return Object.values(data.data.imageUrls);
       })
       .catch((error) => {
@@ -54,20 +48,19 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
   };
 
   const getImageGalleryListing = () => {
-    // console.log("this pathname", thisPathname);
+    //
     var page = thisPathname.slice(1);
     page = page.split("/").pop() as any;
 
-    // console.log("id is", page);
+    //
 
     if (thisPathname?.includes("/listing-stay-detail")) {
       const data = fetchListing(page)
         .then((data) => {
-          console.log("data received", data);
           return data;
         })
         .catch((err) => {
-          // console.log("error", err);
+          //
 
           return [];
         });

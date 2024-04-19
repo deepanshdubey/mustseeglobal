@@ -253,7 +253,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
 
   // ===================== MENU MAIN MENU =====================
   const renderMainItem = (item: NavItemType) => {
-    // console.log("itemm", item);
+    //
 
     return (
       <>

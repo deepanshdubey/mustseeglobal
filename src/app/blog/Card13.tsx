@@ -19,7 +19,7 @@ export interface Card13Props {
 
 const Card13: FC<Card13Props> = ({ className = "", post, key }) => {
   const { articles } = useArticleContext();
-  // console.log("articles in card12.tsx", articles);
+  //
 
   const {
     title: postTitle,
@@ -30,11 +30,11 @@ const Card13: FC<Card13Props> = ({ className = "", post, key }) => {
     date: postDate,
   } = post;
 
-  // console.log("post", post);
+  //
 
   const title =
     (articles && articles.length > 0 ? post.articleTitle : "") || postTitle;
-  // console.log(title);
+  //
 
   const desc =
     (articles && articles.length > 0 ? post.articleContent : "") || postDesc;

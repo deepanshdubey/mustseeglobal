@@ -12,13 +12,13 @@ interface Props {
 }
 
 const ButtonSubmit: FC<Props> = ({ href = "/listing-stay-map", location }) => {
-  // console.log("location in submit button", location);
+  //
 
   const { search, setSearch } = useSearchContext();
   const currentPage = usePathname();
   const searchListings = (e: any) => {
     e.preventDefault();
-    console.log("listings search");
+
     setSearch((prevSearch: any) => ({
       ...prevSearch,
       page: currentPage,

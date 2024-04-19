@@ -39,7 +39,7 @@ const StayCard2: FC<StayCard2Props> = ({
   //   _id,
   // } = data;
 
-  // console.log("dataaaaaaa in statycard2", data);
+  //
 
   const {
     count,
@@ -62,13 +62,13 @@ const StayCard2: FC<StayCard2Props> = ({
   const renderImages = (imageUrls: any) => {
     const imageArray = [];
     for (const key in imageUrls) {
-      // console.log("keysss", key);
+      //
 
       if (imageUrls.hasOwnProperty(key)) {
         const value = imageUrls[key];
         imageArray.push(value);
       }
-      // console.log("imagesssssssss in staycard2", imageArray);
+      //
     }
     setImages(imageArray);
   };

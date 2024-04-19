@@ -152,9 +152,9 @@ const DEMO_CATS_2: TaxonomyType[] = [
 
 function PageHome() {
   const articles = useArticleContext();
-  // console.log("article context", articles);
+  //
   const { listings } = useListingContext();
-  // console.log("listing context", listings);
+  //
 
   return (
     <main className="nc-PageHome relative overflow-hidden mb-20">

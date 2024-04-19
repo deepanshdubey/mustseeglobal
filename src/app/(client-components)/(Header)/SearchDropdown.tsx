@@ -15,11 +15,8 @@ const SearchDropdown: FC<Props> = ({ className = "" }) => {
   const router = useRouter();
   const searchBlogs = (e: any) => {
     e.preventDefault();
-    console.log("ref", inputRef?.current?.value);
 
     const fetchArticle = async () => {
-      console.log("search is");
-
       try {
         const response = await axios.get(
           `https://msny-backend-deepansh.vercel.app/api/v1/articles?slug=${inputRef?.current?.value}`
@@ -28,7 +25,7 @@ const SearchDropdown: FC<Props> = ({ className = "" }) => {
         //   `http://localhost:9000/api/v1/articles`
         // );
         const article = response.data;
-        console.log("blog search is", article);
+
         const result = article[0]?.slug ?? "";
 
         if (result) {
@@ -39,10 +36,10 @@ const SearchDropdown: FC<Props> = ({ className = "" }) => {
         // setArticle(article);
         // setfirstArticle(article);
 
-        // console.log("single article", article);
+        //
 
         // let first = article[0]
-        // console.log(firstArticle, "first article");
+        //
         // setLoading(false); // Set loading to false when data is received
       } catch (error) {
         console.error("error while fetching single article", error);

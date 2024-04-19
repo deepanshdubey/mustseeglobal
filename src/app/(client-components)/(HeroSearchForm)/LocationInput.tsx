@@ -33,8 +33,6 @@ const LocationInput: FC<LocationInputProps> = ({
 
   const { search, setSearch } = useSearchContext();
 
-  console.log("search is ", search);
-
   useEffect(() => {
     setShowPopover(autoFocus);
   }, [autoFocus]);
@@ -68,7 +66,7 @@ const LocationInput: FC<LocationInputProps> = ({
 
   const handleSelectLocation = (item: string) => {
     setValue(item);
-    console.log("Selected value", item);
+
     setLocation(item);
     setShowPopover(false);
     setSearch((prevSearch: any) => ({ ...prevSearch, page: "/", name: item }));
