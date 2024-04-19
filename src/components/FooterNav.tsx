@@ -4,6 +4,10 @@ import {
   HeartIcon,
   MagnifyingGlassIcon,
   UserCircleIcon,
+  HomeIcon,
+  PencilSquareIcon,
+  CubeIcon,
+  BuildingOffice2Icon
 } from "@heroicons/react/24/outline";
 import React, { useEffect, useRef } from "react";
 import { PathName } from "@/routers/types";
@@ -11,6 +15,7 @@ import MenuBar from "@/shared/MenuBar";
 import isInViewport from "@/utils/isInViewport";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 
 let WIN_PREV_POSITION = 0;
 if (typeof window !== "undefined") {
@@ -25,19 +30,20 @@ interface NavItem {
 
 const NAV: NavItem[] = [
   {
-    name: "Things to do",
-    link: "/thingstodo",
-    icon: MagnifyingGlassIcon,
+    name: "Home",
+    link: "/",
+    icon: HomeIcon
+    // icon: MagnifyingGlassIcon,
   },
   {
     name: "Stays",
     link: "/listings",
-    icon: HeartIcon,
+    icon: BuildingOffice2Icon,
   },
   {
     name: "Blogs",
     link: "/blog",
-    icon: UserCircleIcon,
+    icon: PencilSquareIcon,
   },
   {
     name: "Menu",
