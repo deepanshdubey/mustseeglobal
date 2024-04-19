@@ -11,6 +11,7 @@ import CarsSearchForm from "./(car-search-form)/CarsSearchForm";
 import FlightSearchForm from "./(flight-search-form)/FlightSearchForm";
 import { useSearchContext } from "@/context/searchContext";
 import { usePathname, useRouter } from "next/navigation";
+import axios from "axios";
 
 const HeroSearchForm2Mobile = () => {
   const [showModal, setShowModal] = useState(false);
@@ -22,22 +23,49 @@ const HeroSearchForm2Mobile = () => {
     "/safety": "Safety",
   };
   const [activeTab, setActiveTab] = useState(""); // Initialize active tab index
+  const { search, setSearch } = useSearchContext();
 
   useEffect(() => {
     if (currentPage != "/") {
       setActiveTab(pageToActiveTab[currentPage]);
+      setSearch((prevSearch: any) => ({
+        ...prevSearch,
+        tab: {
+          active: pageToActiveTab[currentPage],
+          page: currentPage,
+        },
+      }));
     } else {
       setActiveTab("Things to do");
+      setSearch((prevSearch: any) => ({
+        ...prevSearch,
+        tab: {
+          active: "Things to do",
+          page: currentPage,
+        },
+      }));
     }
   }, [currentPage]);
 
+  useEffect(() => {
+    if (search.hideModal.isActive && search.hideModal.value) {
+      setShowModal(false);
+    }
+  }, [search.hideModal]);
+
   const [activeSearch, setActiveSearch] = useState(false);
-  const { search, setSearch } = useSearchContext();
   const router = useRouter();
 
   const handleTabClick = (index: any) => {
     if (currentPage == "/") {
       setActiveTab(index);
+      setSearch((prevSearch: any) => ({
+        ...prevSearch,
+        tab: {
+          active: index,
+          page: currentPage,
+        },
+      }));
     }
   };
   useEffect(() => {

@@ -86,11 +86,18 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
           // setSearch((prevValue) => ({ ...prevValue, isActive: false }));
         }
 
-        if (search.category.name && search.page == currentPage) {
+        if (
+          search.category.isActive &&
+          search.category.name &&
+          search.page == currentPage
+        ) {
           queryParams += `&category.name=${search.category.name}`;
         }
 
         setOldQuery(queryParams);
+
+        console.log("query params is", queryParams);
+
         try {
           const response = await fetch(
             // `https://msny-backend-deepansh.vercel.app/api/v1/listings?category.name=${object[page]}`

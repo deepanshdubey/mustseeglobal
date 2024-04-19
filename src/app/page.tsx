@@ -181,6 +181,7 @@ function PageHome() {
           itemPerRow={5}
           sliderStyle="style2"
           from="/listing-stay"
+          className="pb-[4rem]"
         />
 
         <SectionVideos />
