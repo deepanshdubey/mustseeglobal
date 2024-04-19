@@ -122,7 +122,8 @@ const StaySearchForm = () => {
             <span>{guestSelected || `Add guests`}</span>
           </button>
         ) : (
-          <GuestsInput defaultValue={guestInput} onChange={setGuestInput} />
+          <></>
+          // <GuestsInput defaultValue={guestInput} onChange={setGuestInput} />
         )}
       </div>
     );
@@ -134,9 +135,9 @@ const StaySearchForm = () => {
         {/*  */}
         {renderInputLocation()}
         {/*  */}
-        {renderInputDates()}
+        {/* {renderInputDates()} */}
         {/*  */}
-        {renderInputGuests()}
+        {/* {renderInputGuests()} */}
       </div>
     </div>
   );

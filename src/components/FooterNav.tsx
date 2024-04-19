@@ -31,7 +31,7 @@ const NAV: NavItem[] = [
   },
   {
     name: "Stays",
-    link: "/stays",
+    link: "/listings",
     icon: HeartIcon,
   },
   {
