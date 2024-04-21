@@ -64,7 +64,7 @@ const StayCard2: FC<StayCard2Props> = ({
     for (const key in imageUrls) {
       //
 
-      if (imageUrls.hasOwnProperty(key)) {
+      if (imageUrls?.hasOwnProperty(key)) {
         const value = imageUrls[key];
         imageArray.push(value);
       }
