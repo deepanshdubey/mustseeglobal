@@ -72,7 +72,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
         );
         const data = await response.json();
         setListings(data.data[0]);
-        renderImages(data.data[0].imageUrls);
+        renderImages(data.data[0]?.imageUrls);
 
         setLoading(false);
       } catch (error) {
@@ -90,7 +90,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
     for (const key in imageUrls) {
       //
 
-      if (imageUrls.hasOwnProperty(key)) {
+      if (imageUrls?.hasOwnProperty(key)) {
         const value = imageUrls[key];
         imageArray.push(value);
       }

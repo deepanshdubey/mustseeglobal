@@ -39,7 +39,7 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
         return response.json();
       })
       .then((data) => {
-        return Object.values(data.data.imageUrls);
+        return Object.values(data.data?.imageUrls);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

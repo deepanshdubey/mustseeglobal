@@ -46,7 +46,7 @@ const StayCard: FC<StayCardProps> = ({
   const [images, setImages] = useState<any>();
   useEffect(() => {
     renderImages(imageUrls);
-  }, [data.imageUrls]);
+  }, [data?.imageUrls]);
 
   const renderImages = (imageUrls: any) => {
     const imageArray = [];

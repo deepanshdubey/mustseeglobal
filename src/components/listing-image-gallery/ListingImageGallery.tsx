@@ -77,7 +77,7 @@ const ListingImageGallery: FC<Props> = ({
       })
       .then((data) => {
         //
-        return Object.values(data.imageUrls);
+        return Object.values(data?.imageUrls);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
