@@ -67,7 +67,7 @@ const SectionHeroArchivePage: FC<SectionHeroArchivePageProps> = ({
     const fetchListings = async () => {
       try {
         const response = await axios.get(
-          `https://msny-backend-deepansh.vercel.app/api/v1/listings?category.name=${
+          `https://msny-backend-theta.vercel.app/api/v1/listings?category.name=${
             object[herosectionpage.slice(1)]
           }`
         );

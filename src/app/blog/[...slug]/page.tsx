@@ -69,7 +69,7 @@ const Page = ({
     const fetchArticle = async () => {
       try {
         const response = await axios.get(
-          `https://msny-backend-deepansh.vercel.app/api/v1/articles/${slug[0]}`
+          `https://msny-backend-theta.vercel.app/api/v1/articles/${slug[0]}`
         );
         // const response = await axios.get(
         //   `http://localhost:9000/api/v1/articles`

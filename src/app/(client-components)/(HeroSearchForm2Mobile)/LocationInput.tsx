@@ -73,7 +73,7 @@ const LocationInput: FC<Props> = ({
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        let queryParams = `https://msny-backend-deepansh.vercel.app/api/v1/listings?`;
+        let queryParams = `https://msny-backend-theta.vercel.app/api/v1/listings?`;
 
         if (search.tab.active) {
           queryParams += `category.name=${object[search.tab.active]}`;
@@ -98,7 +98,7 @@ const LocationInput: FC<Props> = ({
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        let queryParams = `https://msny-backend-deepansh.vercel.app/api/v1/listings?`;
+        let queryParams = `https://msny-backend-theta.vercel.app/api/v1/listings?`;
         if (search.tab.active) {
           queryParams += `category.name=${object[search.tab.active]}`;
         }

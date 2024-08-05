@@ -76,7 +76,7 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
   useEffect(() => {
     const fetchData = async () => {
       if (firstSearch || search.isActive || search.category.isActive) {
-        let queryParams = `https://msny-backend-deepansh.vercel.app/api/v1/listings?`;
+        let queryParams = `https://msny-backend-theta.vercel.app/api/v1/listings?`;
 
         if (page) {
           queryParams += `page=1&limit=16`;
@@ -129,12 +129,12 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
 
         try {
           const response = await fetch(
-            `https://msny-backend-deepansh.vercel.app/api/v1/listings` +
+            `https://msny-backend-theta.vercel.app/api/v1/listings` +
               queryParams
           );
 
           setOldQuery(
-            `https://msny-backend-deepansh.vercel.app/api/v1/listings` +
+            `https://msny-backend-theta.vercel.app/api/v1/listings` +
               queryParams
           );
           const res = await response.json();

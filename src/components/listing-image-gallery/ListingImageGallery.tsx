@@ -67,7 +67,7 @@ const ListingImageGallery: FC<Props> = ({
     //
 
     return fetch(
-      `https://msny-backend-deepansh.vercel.app/api/v1/listings/${id}`
+      `https://msny-backend-theta.vercel.app/api/v1/listings/${id}`
     )
       .then((response) => {
         if (!response.ok) {

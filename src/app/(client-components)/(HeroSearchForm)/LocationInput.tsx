@@ -103,7 +103,7 @@ const LocationInput: FC<LocationInputProps> = ({
     const fetchListings = async () => {
       if (firstSearch || search.category.isActive) {
         try {
-          let queryParams = `https://msny-backend-deepansh.vercel.app/api/v1/listings?`;
+          let queryParams = `https://msny-backend-theta.vercel.app/api/v1/listings?`;
           if (search.category.isActive && currentPage == "/") {
             queryParams += `category.name=${search.category.name}`;
           } else if (currentPage != "/") {

@@ -30,7 +30,7 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 
   const fetchListing = (id: any) => {
     return fetch(
-      `https://msny-backend-deepansh.vercel.app/api/v1/listings/${slug}`
+      `https://msny-backend-theta.vercel.app/api/v1/listings/${slug}`
     )
       .then((response) => {
         if (!response.ok) {

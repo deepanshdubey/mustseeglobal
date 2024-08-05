@@ -61,7 +61,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
       if (firstSearch || search.isActive) {
         var currentpage: string = currentPage.slice(1);
         // var name = searchParams.get("name");
-        let queryParams = `https://msny-backend-deepansh.vercel.app/api/v1/listings?page=${page}`;
+        let queryParams = `https://msny-backend-theta.vercel.app/api/v1/listings?page=${page}`;
 
         // if (filter) {
         //   queryParams += `&filter=${filter}`;

@@ -49,7 +49,7 @@ export const ArticleProvider = ({ children }: childrenType) => {
     const fetchArticle = async () => {
       try {
         const response = await axios.get(
-          `https://msny-backend-deepansh.vercel.app/api/v1/articles`
+          `https://msny-backend-theta.vercel.app/api/v1/articles`
         );
         // const response = await axios.get(
         //   `http://localhost:9000/api/v1/articles`

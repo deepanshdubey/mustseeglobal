@@ -68,7 +68,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
       try {
         const path = slug[0];
         const response = await fetch(
-          `https://msny-backend-deepansh.vercel.app/api/v1/listings?slug=${path}`
+          `https://msny-backend-theta.vercel.app/api/v1/listings?slug=${path}`
         );
         const data = await response.json();
         setListings(data.data[0]);
