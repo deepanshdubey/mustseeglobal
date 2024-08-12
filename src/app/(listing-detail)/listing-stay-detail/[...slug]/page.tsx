@@ -131,7 +131,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
             <Badge
               name={
                 (listings?.category?.category?.charAt(0)?.toUpperCase() ??
-                  "Must See New York") +
+                  "MustSee Global") +
                   (listings?.category?.category ?? "")?.slice(1) ?? ""
               }
             />

@@ -15,6 +15,9 @@ const CardCategoryBox1: FC<CardCategoryBox1Props> = ({
   taxonomy,
 }) => {
   const { count, name, thumbnail, href = "/" } = taxonomy;
+
+  {console.log("Name",  name)}
+
   return (
     <Link
       href={href}
@@ -41,7 +44,7 @@ const CardCategoryBox1: FC<CardCategoryBox1Props> = ({
         <span
           className={`block mt-2 text-sm text-neutral-500 dark:text-neutral-400`}
         >
-          Must See Global
+          {name == "New York"? "MustSee Global":"Coming Soon..."}
         </span>
       </div>
     </Link>

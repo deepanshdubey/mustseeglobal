@@ -173,7 +173,7 @@ function PageHome2() {
           categoryCardType="card4"
           itemPerRow={4}
           heading="Suggestions for discovery"
-          subHeading="Popular places to stay that Must See New York recommends for you"
+          subHeading="Popular places to stay that MustSee Global recommends for you"
         />
 
         <div className="relative py-16">

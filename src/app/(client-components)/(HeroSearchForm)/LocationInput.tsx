@@ -68,8 +68,7 @@ const LocationInput: FC<LocationInputProps> = ({
   const currentPage = usePathname();
   const router = useRouter();
   const handleSelectLocation = (item: any) => {
-    setValue(item.name);
-
+    setValue(item);
     setLocation(item);
     setShowPopover(false);
     // setSearch((prevSearch: any) => ({
@@ -77,8 +76,14 @@ const LocationInput: FC<LocationInputProps> = ({
     //   name: item.name,
     // }));
 
-    router.push(`/listing-stay-detail/${item.slug}`);
-  };
+    if(item == "New York"){
+      window.open("https://www.mustseenewyork.com/", "_blank")
+
+    }
+    else{
+      router.push('/comingsoon')
+    }
+    };
 
   const [listings, setListings] = useState([]);
   const [recentSearches, setRecentSearches] = useState([]);
@@ -99,48 +104,54 @@ const LocationInput: FC<LocationInputProps> = ({
     "/events": "events",
   };
 
-  useEffect(() => {
-    const fetchListings = async () => {
-      if (firstSearch || search.category.isActive) {
-        try {
-          let queryParams = `https://msny-backend-theta.vercel.app/api/v1/listings?`;
-          if (search.category.isActive && currentPage == "/") {
-            queryParams += `category.name=${search.category.name}`;
-          } else if (currentPage != "/") {
-            queryParams += `category.name=${object[currentPage]}`;
-          }
+  // useEffect(() => {
+  //   const fetchListings = async () => {
+  //     if (firstSearch || search.category.isActive) {
+  //       try {
+  //         let queryParams = `https://msny-backend-theta.vercel.app/api/v1/listings?`;
+  //         if (search.category.isActive && currentPage == "/") {
+  //           queryParams += `category.name=${search.category.name}`;
+  //         } else if (currentPage != "/") {
+  //           queryParams += `category.name=${object[currentPage]}`;
+  //         }
 
-          const response = await axios.get(queryParams);
+  //         const response = await axios.get(queryParams);
 
-          const listing_response = response.data.data;
+  //         const listing_response = response.data.data;
 
-          setListings(listing_response);
-          //@ts-ignore
-          const arr: any = [];
-          listing_response.slice(0, 5).map((listing: any) => {
-            arr.push(listing);
-          });
-          setRecentSearches(arr);
-          setSearchValues(arr);
-          setFirstSearch(false);
-        } catch (error) {
-          console.error("errrorr is", error);
-        }
-      }
-    };
+  //         setListings(listing_response);
+  //         //@ts-ignore
+  //         const arr: any = [];
+  //         listing_response.slice(0, 5).map((listing: any) => {
+  //           arr.push(listing);
+  //         });
+  //         setRecentSearches(arr);
+  //         setSearchValues(arr);
+  //         setFirstSearch(false);
+  //       } catch (error) {
+  //         console.error("errrorr is", error);
+  //       }
+  //     }
+  //   };
 
-    fetchListings();
-  }, [search, currentPage]);
+  //   fetchListings();
+  // }, [search, currentPage]);
 
-  useEffect(() => {
-    setSearchValues((prevValue) => {
-      const arr = listings?.filter((listing: any) =>
-        listing.name.toLowerCase().includes(value.toLowerCase())
-      );
+  // useEffect(() => {
+  //   setSearchValues((prevValue) => {
+  //     const arr = listings?.filter((listing: any) =>
+  //       listing.name.toLowerCase().includes(value.toLowerCase())
+  //     );
 
-      return arr?.slice(0, 5);
-    });
-  }, [listings, value]);
+  //     return arr?.slice(0, 5);
+  //   });
+  // }, [listings, value]);
+
+  const cities = [
+    "New York",
+    "Paris",
+    "Italy",
+    "Chicago"];
 
   const renderRecentSearches = () => {
     return (
@@ -150,27 +161,20 @@ const LocationInput: FC<LocationInputProps> = ({
         </h3>
         <div className="mt-2">
           {
-            // [
-            //   "Hamptons, Suffolk County, NY",
-            //   "Las Vegas, NV, United States",
-            //   "Ueno, Taito, Tokyo",
-            //   "Ikebukuro, Toshima, Tokyo",
-            // ]
-
-            recentSearches?.map((item: any) => (
-              <span
-                onClick={() => handleSelectLocation(item)}
-                key={item}
-                className="flex px-4 sm:px-8 items-center space-x-3 sm:space-x-4 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
-              >
-                <span className="block text-neutral-400">
-                  <ClockIcon className="h-4 sm:h-6 w-4 sm:w-6" />
+            cities.map((item: any) => (
+                <span
+                  onClick={() => handleSelectLocation(item)}
+                  key={item}
+                  className="flex px-4 sm:px-8 items-center space-x-3 sm:space-x-4 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                >
+                  <span className="block text-neutral-400">
+                    <ClockIcon className="h-4 sm:h-6 w-4 sm:w-6" />
+                  </span>
+                  <span className=" block font-medium text-neutral-700 dark:text-neutral-200">
+                    {item}
+                  </span>
                 </span>
-                <span className=" block font-medium text-neutral-700 dark:text-neutral-200">
-                  {item.name}
-                </span>
-              </span>
-            ))
+              ))
           }
         </div>
       </>
@@ -187,7 +191,7 @@ const LocationInput: FC<LocationInputProps> = ({
           //   "Humboldt Park, Chicago, IL",
           //   "Bangor, Northern Ireland",
           // ]
-          searchValues?.map((item: any) => (
+          cities?.map((item: any) => (
             <span
               onClick={() => handleSelectLocation(item)}
               key={item}
@@ -210,9 +214,8 @@ const LocationInput: FC<LocationInputProps> = ({
     <div className={`relative flex ${className}`} ref={containerRef}>
       <div
         onClick={() => setShowPopover(true)}
-        className={`flex z-10 flex-1 relative [ nc-hero-field-padding ] flex-shrink-0 items-center space-x-3 cursor-pointer focus:outline-none text-left  ${
-          showPopover ? "nc-hero-field-focused" : ""
-        }`}
+        className={`flex z-10 flex-1 relative [ nc-hero-field-padding ] flex-shrink-0 items-center space-x-3 cursor-pointer focus:outline-none text-left  ${showPopover ? "nc-hero-field-focused" : ""
+          }`}
       >
         <div className="text-neutral-300 dark:text-neutral-400">
           <MapPinIcon className="w-5 h-5 lg:w-7 lg:h-7" />

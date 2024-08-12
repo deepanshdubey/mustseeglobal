@@ -172,8 +172,8 @@ const SectionVideos: FC<SectionVideosProps> = ({
 
   return (
     <div className={`nc-SectionVideos ${className}` }>
-      <Heading desc="Embark on a visual journey through New York's iconic landmarks and hidden gems. Experience the city's stunning landscapes and captivating attractions, and discover what makes it truly unforgettable.">
-        🎬 Discover New York in Action!
+      <Heading className="flex flex-col-12" desc="Embark on a visual journey through iconic landmarks and hidden gems of cities worldwide, experiencing stunning landscapes and unique attractions that make each city unforgettable.">
+        🎬 Discover famous cities in Action!
       </Heading>
 
       <div className="flex flex-col relative sm:pr-4 sm:py-1 md:pr-6 md:py-2 xl:pr-5 xl:py-5 lg:flex-row">

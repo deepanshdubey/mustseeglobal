@@ -107,7 +107,7 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
           categoryCardType="card5"
           itemPerRow={5}
           heading="Suggestions for discovery"
-          subHeading="Popular places to stay that Must See New York recommends for you"
+          subHeading="Popular places to stay that MustSee Global recommends for you"
           sliderStyle="style2"
           from="/"
           className="pt-24 lg:pt-32"

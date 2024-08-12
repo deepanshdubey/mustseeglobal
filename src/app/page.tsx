@@ -166,9 +166,11 @@ function PageHome() {
 
         {/* SECTION HERO */}
         <SectionHero className="pt-10 lg:pt-16 lg:pb-16" />
+        <SectionGridCategoryBox />
 
         {/* SECTION 1 */}
-        <SectionGridFeaturePlaces from="/" cardType="card2" />
+        {/* <SectionGridFeaturePlaces from="/" cardType="card2" /> */}
+
 
         {/* <SectionSliderNewCategories categories={DEMO_CATS} from="/" /> */}
 
@@ -186,7 +188,7 @@ function PageHome() {
         <SectionOurFeatures />
         <SectionHowItWork />
 
-        <div className="relative py-16">
+        {/* <div className="relative py-16">
           <BackgroundSection className="bg-orange-50 dark:bg-black/20" />
           <SectionSliderNewCategories
             // categories={DEMO_CATS_2}
@@ -194,11 +196,11 @@ function PageHome() {
             categoryCardType="card5"
             itemPerRow={4}
             heading="Suggestions for discovery"
-            subHeading="Popular places to stay that Must See New York recommends for you"
+            subHeading="Popular places to stay that MustSee Global recommends for you"
             sliderStyle="style2"
             from="/"
           />
-        </div>
+        </div> */}
 
         <SectionSubscribe2 />
 
@@ -207,7 +209,7 @@ function PageHome() {
         {/* <SectionGridAuthorBox /> */}
         {/* </div> */}
 
-        <SectionGridCategoryBox />
+  
 
         <div className="relative py-10">
           <BackgroundSection />

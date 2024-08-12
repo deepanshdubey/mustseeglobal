@@ -15,11 +15,11 @@ const info = [
   },
   {
     title: "💌 EMAIL",
-    desc: "newyork@mustsee.com",
+    desc: "admin@mustsee.global",
   },
   {
     title: "☎ PHONE",
-    desc: "+91 8130263311",
+    desc: "+1 917-391-3144",
   },
 ];
 

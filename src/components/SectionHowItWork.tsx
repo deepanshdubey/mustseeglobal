@@ -34,7 +34,7 @@ const DEMO_DATA: SectionHowItWorkProps["data"] = [
     id: 3,
     img: HIW3img,
     title: "Save more",
-    desc: "Unlock exclusive savings and make every trip memorable with Must See New York!",
+    desc: "Unlock exclusive savings and make every trip memorable with MustSee Global!",
   },
 ];
 
@@ -47,7 +47,7 @@ const SectionHowItWork: FC<SectionHowItWorkProps> = ({
       className={`nc-SectionHowItWork  ${className}`}
       data-nc-id="SectionHowItWork"
     >
-      <Heading isCenter desc="Keep calm & travel on with Must See New York!        
+      <Heading isCenter desc="Keep calm & travel on with MustSee Global!        
 ">
         How it work
       </Heading>

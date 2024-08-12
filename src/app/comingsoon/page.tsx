@@ -21,7 +21,7 @@ const PageAbout: FC<PageAboutProps> = ({}) => {
           rightImg={rightImg}
           heading="👋 Coming Soon"
           btnText=""
-          subHeading="Discover the essence of the Big Apple with Must See Global. From iconic landmarks to hidden gems, our curated guides offer the best things to do, places to eat, and where to stay. Stay updated on the latest events and navigate the city like a local with our detailed maps and safety tips. Let Must See New York be your companion in exploring the vibrant and dynamic cities of the World."
+          subHeading="Discover the essence of the Big Apple with Must See Global. From iconic landmarks to hidden gems, our curated guides offer the best things to do, places to eat, and where to stay. Stay updated on the latest events and navigate the city like a local with our detailed maps and safety tips. Let MustSee Global be your companion in exploring the vibrant and dynamic cities of the World."
         />
 
         <SectionFounder />

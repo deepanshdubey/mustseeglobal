@@ -24,10 +24,10 @@ const SectionBecomeAnAuthor: FC<SectionBecomeAnAuthorProps> = ({
           Why did you choose us?
         </h2>
         <span className="block mt-6 text-neutral-500 dark:text-neutral-400">
-          {/* Accompanying us, you have a trip full of experiences. With Must See New York,
+          {/* Accompanying us, you have a trip full of experiences. With MustSee Global,
           booking accommodation, resort villas, hotels, private houses,
           apartments... becomes fast, convenient and easy. */}
-          Elevate your New York experience with Must See New York. Our platform
+          Elevate your New York experience with MustSee Global. Our platform
           makes booking accommodations and exploring the city's attractions
           effortless, ensuring you make the most of your time in this vibrant
           city.

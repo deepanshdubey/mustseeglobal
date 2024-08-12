@@ -8,17 +8,16 @@ import FlightSearchForm from "./(flight-search-form)/FlightSearchForm";
 import { useSearchContext } from "@/context/searchContext";
 import { usePathname } from "next/navigation";
 
-// export type SearchTab = "Stays" | "Experiences" | "Cars" | "Flights";
 export type SearchTab =
   | "Stays"
   | "Experiences"
   | "Cars"
   | "Flights"
-  | "Things to do"
-  | "Food"
-  | "Stay"
-  | "Safety"
-  | "Maps";
+  | "New York"
+  | "Italy"
+  | "Paris"
+  | "Chicago"
+  | "New Delhi";
 
 export interface HeroSearchFormProps {
   className?: string;
@@ -31,8 +30,7 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
   currentTab = "Stays",
   currentPage,
 }) => {
-  // const tabs: SearchTab[] = ["Stays", "Experiences", "Cars", "Flights"];
-  const tabs: SearchTab[] = ["Things to do", "Food", "Stay", "Safety", "Maps"];
+  const tabs: SearchTab[] = ["New York", "Italy", "Paris", "Chicago", "New Delhi"];
 
   interface ObjectWithKeys {
     [key: string]: string;
@@ -41,15 +39,16 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
   interface Categories {
     [key: string]: string;
   }
+
   const categories: Categories = {
-    "/thingstodo": "Things to do",
-    "/food": "Food",
-    "/stay": "Stay",
-    "/safety": "Safety",
-    "/maps": "Maps",
+    "https://www.mustseenewyork.com/": "New York",
+    "//italy": "Italy",
+    "/comingsoon/paris": "Paris",
+    "/comingsoon/chicago": "Chicago",
+    "/comingsoon": "New Delhi",
   };
 
-  var page = usePathname();
+  const page = usePathname();
 
   const object: ObjectWithKeys = {
     Food: "restaurant",
@@ -59,44 +58,43 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
     Maps: "geographic",
     events: "events",
   };
-  // const [tabActive, setTabActive] = useState<SearchTab>(
-  //   categories[page as string]
-  // );
 
-  const [tabActive, setTabActive] = useState<any>(categories[page as string]);
+  const [tabActive, setTabActive] = useState<SearchTab>(categories[page as string] as SearchTab);
   const { search, setSearch } = useSearchContext();
+
   const renderTab = () => {
     return (
       <ul className="ml-2 sm:ml-6 md:ml-12 flex space-x-5 sm:space-x-8 lg:space-x-11 overflow-x-auto hiddenScrollbar">
         {tabs.map((tab) => {
-          // const active = tab === tabActive;
-
           const active = tab === tabActive;
           return (
             <li
               onClick={
                 page == "/"
                   ? () => {
-                      setTabActive(tab);
-                      setSearch((prevSearch: any) => ({
-                        ...prevSearch,
-                        page,
-                        category: {
-                          name: object[tab],
-                          isActive: true,
-                          // page,
-                        },
-                      }));
-
-                      setTimeout(() => {
+                      if (tab === "New York") {
+                        window.open("https://www.mustseenewyork.com/", "_blank");
+                      } else {
+                        setTabActive(tab);
                         setSearch((prevSearch: any) => ({
                           ...prevSearch,
+                          page,
                           category: {
                             name: object[tab],
-                            isActive: false,
+                            isActive: true,
                           },
                         }));
-                      }, 2000);
+
+                        setTimeout(() => {
+                          setSearch((prevSearch: any) => ({
+                            ...prevSearch,
+                            category: {
+                              name: object[tab],
+                              isActive: false,
+                            },
+                          }));
+                        }, 2000);
+                      }
                     }
                   : () => {}
               }
@@ -129,7 +127,6 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
       case "Flights":
         return <FlightSearchForm />;
       default:
-        // return null;
         return <StaySearchForm />;
     }
   };
