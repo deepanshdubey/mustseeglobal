@@ -13,17 +13,17 @@ export interface SectionGridCategoryBoxProps {
 
 const DEMO_CATS: TaxonomyType[] = [
   {
-    id: "1",
-    href: "/listing-stay-map",
-    name: "New Yourk",
+    id: "7",
+    href: "https://www.mustseenewyork.com/",
+    name: "New York",
     taxonomy: "category",
-    count: 1882,
+    count: 1775,
     thumbnail:
       "https://images.pexels.com/photos/64271/queen-of-liberty-statue-of-liberty-new-york-liberty-statue-64271.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
   },
   {
     id: "2",
-    href: "/listing-stay-map",
+    href: "/comingsoon",
     name: "Singapore",
     taxonomy: "category",
     count: 8288,
@@ -32,7 +32,7 @@ const DEMO_CATS: TaxonomyType[] = [
   },
   {
     id: "3",
-    href: "/listing-stay-map",
+    href: "/comingsoon",
     name: "Paris",
     taxonomy: "category",
     count: 1288,
@@ -41,7 +41,7 @@ const DEMO_CATS: TaxonomyType[] = [
   },
   {
     id: "4",
-    href: "/listing-stay-map",
+    href: "/comingsoon",
     name: "London",
     taxonomy: "category",
     count: 112,
@@ -50,7 +50,7 @@ const DEMO_CATS: TaxonomyType[] = [
   },
   {
     id: "5",
-    href: "/listing-stay-map",
+    href: "/comingsoon",
     name: "Tokyo",
     taxonomy: "category",
     count: 323,
@@ -59,7 +59,7 @@ const DEMO_CATS: TaxonomyType[] = [
   },
   {
     id: "6",
-    href: "/listing-stay-map",
+    href: "/comingsoon",
     name: "Maldives",
     taxonomy: "category",
     count: 2223,
@@ -67,22 +67,22 @@ const DEMO_CATS: TaxonomyType[] = [
       "https://images.pexels.com/photos/3250613/pexels-photo-3250613.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
-    id: "7",
-    href: "/listing-stay-map",
-    name: "New York",
-    taxonomy: "category",
-    count: 1775,
-    thumbnail:
-      "https://images.pexels.com/photos/64271/queen-of-liberty-statue-of-liberty-new-york-liberty-statue-64271.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-  },
-  {
     id: "8",
-    href: "/listing-stay-map",
+    href: "/comingsoon",
     name: "Singapore",
     taxonomy: "category",
     count: 1288,
     thumbnail:
       "https://images.pexels.com/photos/7740160/pexels-photo-7740160.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  },
+  {
+    id: "8",
+    href: "/comingsoon",
+    name: "and many more...",
+    taxonomy: "category",
+    count: 1288,
+    thumbnail:
+      "https://images.pexels.com/photos/4992652/pexels-photo-4992652.jpeg",
   },
 ];
 

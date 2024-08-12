@@ -31,23 +31,24 @@ const SectionGridFeatureProperty: FC<SectionGridFeaturePropertyProps> = ({
   };
 
   return (
-    <div className="nc-SectionGridFeatureProperty relative">
-      <HeaderFilter
-        tabActive={"New York"}
-        subHeading={subHeading}
-        tabs={tabs}
-        heading={heading}
-      />
-      <div
-        className={`grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-1 xl:grid-cols-2 ${gridClass}`}
-      >
-        {stayListings.map(renderCard)}
-      </div>
-      <div className="flex mt-8 mb-8 justify-center items-center">
-        {/* <ButtonPrimary loading>Show me more</ButtonPrimary> */}
-        <ButtonPrimary>Show me more</ButtonPrimary>
-      </div>
-    </div>
+    <></>
+    // <div className="nc-SectionGridFeatureProperty relative">
+    //   <HeaderFilter
+    //     tabActive={"New York"}
+    //     subHeading={subHeading}
+    //     tabs={tabs}
+    //     heading={heading}
+    //   />
+    //   <div
+    //     className={`grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-1 xl:grid-cols-2 ${gridClass}`}
+    //   >
+    //     {stayListings.map(renderCard)}
+    //   </div>
+    //   <div className="flex mt-8 mb-8 justify-center items-center">
+    //     {/* <ButtonPrimary loading>Show me more</ButtonPrimary> */}
+    //     <ButtonPrimary>Show me more</ButtonPrimary>
+    //   </div>
+    // </div>
   );
 };
 

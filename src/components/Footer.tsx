@@ -39,7 +39,7 @@ const widgetMenus: WidgetFooterMenu[] = [
     id: "5",
     title: "Cities",
     menus: [
-      { href: "#", label: "New York" },
+      { href: "https://www.mustseenewyork.com/", label: "New York" },
       { href: "#", label: "Las Vegas" },
       { href: "#", label: "Rome" },
       { href: "#", label: "Delhi" },
@@ -48,7 +48,7 @@ const widgetMenus: WidgetFooterMenu[] = [
   },
   {
     id: "1",
-    title: "Must See New York",
+    title: "Must See Global",
     menus: [
       { href: "/about", label: "About Us" },
       { href: "/contact", label: "Contact Us" },

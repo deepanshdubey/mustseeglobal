@@ -173,9 +173,7 @@ function PageHome() {
         {/* <SectionSliderNewCategories categories={DEMO_CATS} from="/" /> */}
 
         <SectionSliderNewCategories
-          // heading="Explore by types of stays"
           heading="Traveler's Tales"
-          // subHeading="Explore houses based on 10 types of stays"
           subHeading="Explore the World Through Our Blogs"
           categoryCardType="card5"
           itemPerRow={5}

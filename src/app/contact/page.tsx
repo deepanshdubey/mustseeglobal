@@ -11,7 +11,7 @@ export interface PageContactProps {}
 const info = [
   {
     title: "🗺 ADDRESS",
-    desc: "Everywhere You Are, That's Where We'll Be – Virtually Everywhere!",
+    desc: "Broadway, NYC",
   },
   {
     title: "💌 EMAIL",

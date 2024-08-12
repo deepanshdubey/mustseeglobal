@@ -120,9 +120,9 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
 
   const { listings } = useListingContext();
   const { articles } = useArticleContext();
-  console.log("listings--->", listings);
-  console.log("from--->", from);
-  console.log("category card--->", categoryCardType);
+  // console.log("listings--->", listings);
+  // console.log("from--->", from);
+  // console.log("category card--->", categoryCardType);
 
   console.log("current index", currentIndex);
 
@@ -187,7 +187,7 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
       <Heading desc={subHeading} isCenter={sliderStyle === "style2"}>
         {heading}
       </Heading>
-      <MotionConfig
+      {/* <MotionConfig
         transition={{
           x: { type: "spring", stiffness: 300, damping: 30 },
           opacity: { duration: 0.2 },
@@ -266,7 +266,7 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
             />
           ) : null}
         </div>
-      </MotionConfig>
+      </MotionConfig> */}
     </div>
   );
 };
