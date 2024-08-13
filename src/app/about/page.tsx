@@ -25,10 +25,10 @@ const PageAbout: FC<PageAboutProps> = ({}) => {
         />
 
         <SectionFounder />
-        <div className="relative py-16">
+        {/* <div className="relative py-16">
           <BackgroundSection />
           <SectionClientSay />
-        </div>
+        </div> */}
 
         <SectionStatistic />
 

@@ -224,10 +224,10 @@ function PageHome() {
           from="/"
         /> */}
 
-        <div className="relative py-16">
+        {/* <div className="relative py-16">
           <BackgroundSection />
           <SectionClientSay />
-        </div>
+        </div> */}
       </div>
     </main>
   );
