@@ -17,7 +17,7 @@ export type SearchTab =
   | "Italy"
   | "Paris"
   | "Chicago"
-  | "New Delhi";
+  | "more 100+";
 
 export interface HeroSearchFormProps {
   className?: string;
@@ -30,7 +30,7 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
   currentTab = "Stays",
   currentPage,
 }) => {
-  const tabs: SearchTab[] = ["New York", "Italy", "Paris", "Chicago", "New Delhi"];
+  const tabs: SearchTab[] = ["New York", "Italy", "Paris", "Chicago", "more 100+"];
 
   interface ObjectWithKeys {
     [key: string]: string;

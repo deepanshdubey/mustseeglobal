@@ -76,14 +76,12 @@ const LocationInput: FC<LocationInputProps> = ({
     //   name: item.name,
     // }));
 
-    if(item == "New York"){
-      window.open("https://www.mustseenewyork.com/", "_blank")
-
+    if (item == "New York") {
+      window.open("https://www.mustseenewyork.com/", "_blank");
+    } else {
+      router.push("/comingsoon");
     }
-    else{
-      router.push('/comingsoon')
-    }
-    };
+  };
 
   const [listings, setListings] = useState([]);
   const [recentSearches, setRecentSearches] = useState([]);
@@ -149,9 +147,100 @@ const LocationInput: FC<LocationInputProps> = ({
 
   const cities = [
     "New York",
+    "Singapore",
     "Paris",
-    "Italy",
-    "Chicago"];
+    "Tokyo",
+    "Maldives",
+    "Amsterdam",
+    "Antalya",
+    "Athens",
+    "Austin",
+    "Bali",
+    "Bangkok",
+    "Barcelona",
+    "Beijing",
+    "Belgrade",
+    "Bern",
+    "Bogota",
+    "Brussels",
+    "Budapest",
+    "Buenosaires",
+    "Cairo",
+    "Cancun",
+    "Capetown",
+    "Caracas",
+    "Copenhagen",
+    "Corfu",
+    "Costarica",
+    "Cozumel",
+    "Crete",
+    "Dallas",
+    "Delhi",
+    "Dublin",
+    "Edinburgh",
+    "Florence",
+    "Guangzhou",
+    "Havana",
+    "Helsinki",
+    "Hongkong",
+    "Ibiza",
+    "Islamujeres",
+    "Istanbul",
+    "Jakarta",
+    "Kualalumpur",
+    "Kyiv",
+    "Lapaz",
+    "Lasvegas",
+    "Lima",
+    "Lisbon",
+    "Luxembourg",
+    "Lyon",
+    "Marrakech",
+    "Maui",
+    "Medelin",
+    "Medellin",
+    "Monaco",
+    "Montevideo",
+    "Moscow",
+    "Mumbai",
+    "Mykonos",
+    "New York City",
+    "Nice",
+    "Nicosia",
+    "Ny",
+    "Osaka",
+    "Oslo",
+    "Panama",
+    "Phuket",
+    "Prague",
+    "Puertorico",
+    "Puertovallarta",
+    "Quebec",
+    "Quito",
+    "Reykjavik",
+    "Riga",
+    "Riodejaneiro",
+    "Rome",
+    "Sanjose",
+    "Santiago",
+    "Santorini",
+    "Saopaulo",
+    "Seoul",
+    "Seville",
+    "Shanghai",
+    "Stockholm",
+    "Strasbourg",
+    "Taipei",
+    "Toronto",
+    "Tulum",
+    "Valencia",
+    "Valletta",
+    "Vancouver",
+    "Venice",
+    "Vienna",
+    "Warsaw",
+    "Zagreb",
+  ];
 
   const renderRecentSearches = () => {
     return (
@@ -160,22 +249,20 @@ const LocationInput: FC<LocationInputProps> = ({
           Recent searches
         </h3>
         <div className="mt-2">
-          {
-            cities.map((item: any) => (
-                <span
-                  onClick={() => handleSelectLocation(item)}
-                  key={item}
-                  className="flex px-4 sm:px-8 items-center space-x-3 sm:space-x-4 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
-                >
-                  <span className="block text-neutral-400">
-                    <ClockIcon className="h-4 sm:h-6 w-4 sm:w-6" />
-                  </span>
-                  <span className=" block font-medium text-neutral-700 dark:text-neutral-200">
-                    {item}
-                  </span>
-                </span>
-              ))
-          }
+          {cities.map((item: any) => (
+            <span
+              onClick={() => handleSelectLocation(item)}
+              key={item}
+              className="flex px-4 sm:px-8 items-center space-x-3 sm:space-x-4 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+            >
+              <span className="block text-neutral-400">
+                <ClockIcon className="h-4 sm:h-6 w-4 sm:w-6" />
+              </span>
+              <span className=" block font-medium text-neutral-700 dark:text-neutral-200">
+                {item}
+              </span>
+            </span>
+          ))}
         </div>
       </>
     );
@@ -214,8 +301,9 @@ const LocationInput: FC<LocationInputProps> = ({
     <div className={`relative flex ${className}`} ref={containerRef}>
       <div
         onClick={() => setShowPopover(true)}
-        className={`flex z-10 flex-1 relative [ nc-hero-field-padding ] flex-shrink-0 items-center space-x-3 cursor-pointer focus:outline-none text-left  ${showPopover ? "nc-hero-field-focused" : ""
-          }`}
+        className={`flex z-10 flex-1 relative [ nc-hero-field-padding ] flex-shrink-0 items-center space-x-3 cursor-pointer focus:outline-none text-left  ${
+          showPopover ? "nc-hero-field-focused" : ""
+        }`}
       >
         <div className="text-neutral-300 dark:text-neutral-400">
           <MapPinIcon className="w-5 h-5 lg:w-7 lg:h-7" />
