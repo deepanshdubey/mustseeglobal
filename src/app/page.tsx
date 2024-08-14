@@ -184,9 +184,9 @@ function PageHome() {
           className="pb-[4rem]"
         />
 
-        <SectionVideos />
+        {/* <SectionVideos />
         <SectionOurFeatures />
-        <SectionHowItWork />
+        <SectionHowItWork /> */}
 
         {/* <div className="relative py-16">
           <BackgroundSection className="bg-orange-50 dark:bg-black/20" />
@@ -202,7 +202,7 @@ function PageHome() {
           />
         </div> */}
 
-        <SectionSubscribe2 />
+        {/* <SectionSubscribe2 /> */}
 
         {/* <div className="relative py-16"> */}
         {/* <BackgroundSection className="bg-orange-50 dark:bg-black dark:bg-opacity-20 " /> */}
@@ -211,10 +211,10 @@ function PageHome() {
 
   
 
-        <div className="relative py-10">
+        {/* <div className="relative py-10">
           <BackgroundSection />
           <SectionBecomeAnAuthor />
-        </div>
+        </div> */}
 
         {/* <SectionSliderNewCategories
           heading="Explore by types of stays"

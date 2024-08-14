@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { TaxonomyType } from "@/data/types";
 import Badge from "@/shared/Badge";
 import convertNumbThousand from "@/utils/convertNumbThousand";
-import Link from "next/link";
 import Image from "next/image";
 
 export interface CardCategoryBox1Props {
@@ -14,13 +13,12 @@ const CardCategoryBox1: FC<CardCategoryBox1Props> = ({
   className = "",
   taxonomy,
 }) => {
-  const { count, name, thumbnail, href = "/" } = taxonomy;
+  const { count, name, thumbnail } = taxonomy;
 
-  {console.log("Name",  name)}
+  {console.log("Name", name)}
 
   return (
-    <Link
-      href={href}
+    <div
       className={`nc-CardCategoryBox1 relative flex items-center p-3 sm:p-6 [ nc-box-has-hover ] [ nc-dark-box-bg-has-hover ]  ${className}`}
     >
       <Badge
@@ -41,13 +39,20 @@ const CardCategoryBox1: FC<CardCategoryBox1Props> = ({
         <h2 className="text-base font-medium">
           <span className="line-clamp-1">{name}</span>
         </h2>
-        <span
-          className={`block mt-2 text-sm text-neutral-500 dark:text-neutral-400`}
-        >
-          {name == "New York"? "MustSee Global":"Coming Soon..."}
-        </span>
+        <div className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
+          {name === "New York" ? (
+            "MustSee Global"
+          ) : (
+            <Image
+              src="/ComingSoon512.png"
+              width={100}
+              height={100}
+              alt="Coming Soon"
+            />
+          )}
+        </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

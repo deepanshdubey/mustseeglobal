@@ -35,16 +35,16 @@ const NAV: NavItem[] = [
     icon: HomeIcon
     // icon: MagnifyingGlassIcon,
   },
-  {
-    name: "Stays",
-    link: "/listings",
-    icon: BuildingOffice2Icon,
-  },
-  {
-    name: "Blogs",
-    link: "/blog",
-    icon: PencilSquareIcon,
-  },
+  // {
+  //   name: "Stays",
+  //   link: "/listings",
+  //   icon: BuildingOffice2Icon,
+  // },
+  // {
+  //   name: "Blogs",
+  //   link: "/blog",
+  //   icon: PencilSquareIcon,
+  // },
   {
     name: "Menu",
     icon: MenuBar,
