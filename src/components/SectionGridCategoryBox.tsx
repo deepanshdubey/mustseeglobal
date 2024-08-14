@@ -159,7 +159,7 @@ const DEMO_CATS: TaxonomyType[] = [
   {
     "id": "19",
     "href": "/comingsoon",
-    "name": "Buenosaires",
+    "name": "Buenos Aires",
     "taxonomy": "category",
     "count": 1831,
     "thumbnail": "https://images.pexels.com/photos/2438323/pexels-photo-2438323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -303,7 +303,7 @@ const DEMO_CATS: TaxonomyType[] = [
   {
     "id": "37",
     "href": "/comingsoon",
-    "name": "Hongkong",
+    "name": "Hong Kong",
     "taxonomy": "category",
     "count": 5885,
     "thumbnail": "https://images.pexels.com/photos/1337144/pexels-photo-1337144.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -319,7 +319,7 @@ const DEMO_CATS: TaxonomyType[] = [
   {
     "id": "39",
     "href": "/comingsoon",
-    "name": "Islamujeres",
+    "name": "Isla Mujeres",
     "taxonomy": "category",
     "count": 6674,
     "thumbnail": "https://images.pexels.com/photos/18963669/pexels-photo-18963669.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -343,7 +343,7 @@ const DEMO_CATS: TaxonomyType[] = [
   {
     "id": "42",
     "href": "/comingsoon",
-    "name": "Kualalumpur",
+    "name": "Kuala Lumpur",
     "taxonomy": "category",
     "count": 4784,
     "thumbnail": "https://images.pexels.com/photos/433942/pexels-photo-433942.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -367,7 +367,7 @@ const DEMO_CATS: TaxonomyType[] = [
   {
     "id": "45",
     "href": "/comingsoon",
-    "name": "Lasvegas",
+    "name": "Las Vegas",
     "taxonomy": "category",
     "count": 5105,
     "thumbnail": "https://images.pexels.com/photos/2600214/pexels-photo-2600214.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -551,7 +551,7 @@ const DEMO_CATS: TaxonomyType[] = [
   {
     "id": "68",
     "href": "/comingsoon",
-    "name": "Puertorico",
+    "name": "Puerto Rico",
     "taxonomy": "category",
     "count": 2331,
     "thumbnail": "https://images.pexels.com/photos/3661926/pexels-photo-3661926.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -559,7 +559,7 @@ const DEMO_CATS: TaxonomyType[] = [
   {
     "id": "69",
     "href": "/comingsoon",
-    "name": "Puertovallarta",
+    "name": "Puerto Vallarta",
     "taxonomy": "category",
     "count": 4696,
     "thumbnail": "https://images.pexels.com/photos/16487688/pexels-photo-16487688.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -599,7 +599,7 @@ const DEMO_CATS: TaxonomyType[] = [
   {
     "id": "74",
     "href": "/comingsoon",
-    "name": "Riodejaneiro",
+    "name": "Rio De Janeiro",
     "taxonomy": "category",
     "count": 99,
     "thumbnail": "https://images.pexels.com/photos/20342626/pexels-photo-20342626.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -615,7 +615,7 @@ const DEMO_CATS: TaxonomyType[] = [
   {
     "id": "76",
     "href": "/comingsoon",
-    "name": "Sanjose",
+    "name": "San Jose",
     "taxonomy": "category",
     "count": 8409,
     "thumbnail": "https://images.pexels.com/photos/10286719/pexels-photo-10286719.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -639,7 +639,7 @@ const DEMO_CATS: TaxonomyType[] = [
   {
     "id": "79",
     "href": "/comingsoon",
-    "name": "Saopaulo",
+    "name": "Sao Paulo",
     "taxonomy": "category",
     "count": 4612,
     "thumbnail": "https://images.pexels.com/photos/21319449/pexels-photo-21319449.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"

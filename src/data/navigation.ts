@@ -88,7 +88,7 @@ const otherPageChildMenus: NavItemType[] = [
   {
     "id": ncNanoId(),
     "href": "/comingsoon",
-    "name": "Buenosaires",
+    "name": "Buenos Aires",
     "isNew": true
   },
   {
@@ -196,7 +196,7 @@ const otherPageChildMenus: NavItemType[] = [
   {
     "id": ncNanoId(),
     "href": "/comingsoon",
-    "name": "Hongkong",
+    "name": "Hong Kong",
     "isNew": true
   },
   {
@@ -208,7 +208,7 @@ const otherPageChildMenus: NavItemType[] = [
   {
     "id": ncNanoId(),
     "href": "/comingsoon",
-    "name": "Islamujeres",
+    "name": "Isla Mujeres",
     "isNew": true
   },
   {
@@ -226,7 +226,7 @@ const otherPageChildMenus: NavItemType[] = [
   {
     "id": ncNanoId(),
     "href": "/comingsoon",
-    "name": "Kualalumpur",
+    "name": "Kuala Lumpur",
     "isNew": true
   },
   {
@@ -244,7 +244,7 @@ const otherPageChildMenus: NavItemType[] = [
   {
     "id": ncNanoId(),
     "href": "/comingsoon",
-    "name": "Lasvegas",
+    "name": "Las Vegas",
     "isNew": true
   },
   {
@@ -382,13 +382,13 @@ const otherPageChildMenus: NavItemType[] = [
   {
     "id": ncNanoId(),
     "href": "/comingsoon",
-    "name": "Puertorico",
+    "name": "Puerto Rico",
     "isNew": true
   },
   {
     "id": ncNanoId(),
     "href": "/comingsoon",
-    "name": "Puertovallarta",
+    "name": "Puerto Vallarta",
     "isNew": true
   },
   {
@@ -418,7 +418,7 @@ const otherPageChildMenus: NavItemType[] = [
   {
     "id": ncNanoId(),
     "href": "/comingsoon",
-    "name": "Riodejaneiro",
+    "name": "Rio De Janeiro",
     "isNew": true
   },
   {
@@ -430,7 +430,7 @@ const otherPageChildMenus: NavItemType[] = [
   {
     "id": ncNanoId(),
     "href": "/comingsoon",
-    "name": "Sanjose",
+    "name": "San Jose",
     "isNew": true
   },
   {
@@ -448,7 +448,7 @@ const otherPageChildMenus: NavItemType[] = [
   {
     "id": ncNanoId(),
     "href": "/comingsoon",
-    "name": "Saopaulo",
+    "name": "Sao Paulo",
     "isNew": true
   },
   {
